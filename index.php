@@ -13,21 +13,21 @@ include_once "conexao.php";
     <link rel="stylesheet" href="css/style.css">
     <title>Simples Agenda Online</title>
 </head>
-
+<img class="logo" src="img/logo.webp">
 <body>
     <div class="container">
         <div class="row mt-2">
             <div class="col-lg-12 d-flex justify-content-between align-items-center">
-                <div>
-                    <h4>Lista de Agendamentos</h4>
-                </div>
+               
                 <div>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-outline-primary" style="color:black;font-weight: 500;" data-bs-toggle="modal" data-bs-target="#cadUsuarioModal">
                     Agendar
                     </button>
-
                     <!-- Modal -->
+                    <div class="titulo-lista">
+                    <h4>Lista de Agendamentos</h4>
+                    </div>
                     <div class="modal fade" id="cadUsuarioModal" tabindex="-1" aria-labelledby="cadUsuarioModallLabel" aria-hidden="true">
                      <div class="modal-dialog">
                         <div class="modal-content">

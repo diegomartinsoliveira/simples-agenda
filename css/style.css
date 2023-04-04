@@ -12,3 +12,14 @@ body {
     font-size: 25px;
 }
 
+.header-color {
+    height: 100%;
+    width: 100%;
+    color:blue;
+}
+
+.logo {
+    width: 184px;
+    height: 51px;
+}
+

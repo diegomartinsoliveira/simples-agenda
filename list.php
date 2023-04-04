@@ -16,7 +16,7 @@ $dados = "<div class='table-responsive'>
                         <table class='table table-striped table-bordered'>
                             <thead>
                                 <tr>
-                                    <th width='50'>Código</th>
+                                    
                                     <th width='400'>Nome</th>
                                     <th width='150'>Data</th>
                                     <th>Agendamento</th>
@@ -30,7 +30,7 @@ $dados = "<div class='table-responsive'>
 while($row_usuario = $result_usuarios->fetch(PDO::FETCH_ASSOC)){
     extract($row_usuario);
     $dados .= "<tr>
-                    <td>$id</td>
+                    
                     <td>$nome</td>
                     <td>$data</td>
                     <td>$agendamento</td>
