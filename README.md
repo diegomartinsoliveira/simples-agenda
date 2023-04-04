@@ -1,4 +1,4 @@
-#SIMPES AGENDA - SUA AGENDA ONLINE#
+SIMPES AGENDA - SUA AGENDA ONLINE
 
 Agenda online feita em HTML, Bootstrap, Javascript e MySQL
 
