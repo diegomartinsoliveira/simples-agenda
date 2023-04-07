@@ -8,7 +8,7 @@ if(!empty($pagina)){
 $qnt_result_pg = 10;
 $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
 
-$query_usuarios = "SELECT id, nome, data, agendamento FROM agendamentos ORDER BY id DESC LIMIT $inicio, $qnt_result_pg";
+$query_usuarios = "SELECT id_usuario, nome, data, agendamento FROM agendamentos ORDER BY id_usuario DESC LIMIT $inicio, $qnt_result_pg";
 $result_usuarios = $conn->prepare($query_usuarios);
 $result_usuarios->execute();
 
@@ -54,7 +54,7 @@ $dados .= "</tbody>
         </div>";
 
 //somar a quantidade de usuarios
-$query_pg = "SELECT COUNT(id) AS num_result FROM agendamentos";
+$query_pg = "SELECT COUNT(id_usuario) AS num_result FROM agendamentos";
 $result_pg = $conn->prepare($query_pg);
 $result_pg->execute();
 $row_pg = $result_pg->fetch(PDO::FETCH_ASSOC);

@@ -30,25 +30,45 @@ include_once "conexao.php";
                     </div>
                     <div class="modal fade" id="cadUsuarioModal" tabindex="-1" aria-labelledby="cadUsuarioModallLabel" aria-hidden="true">
                      <div class="modal-dialog">
-                        <div class="modal-content">
+                        <div class="modal-content" style="height:50%;">
                             <div class="modal-header">
-                                 <h1 class="modal-title fs-5" id="cadUsuarioModalLabel">Lista de Agendamentos</h1>
+                                 <h1 class="modal-title fs-5" id="cadUsuarioModalLabel">Agendar Cliente</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                          </div>
                                             <div class="modal-body">
                                                 <form id="cad-usuario-form">
                                                     <span id="msgAlertaErroCad"></span>
-                                                <div class="mb-3">
+                                                <div class="mb-2">
                                                     <label for="nome" class="col-form-label">Nome:</label>
                                                     <input type="text" name="nome" class="form-control" id="nome" placeholder="Digite o nome completo">
                                                 </div>
-                                                <div class="mb-3">
+                                                <div class="mb-2">
                                                 <label for="email" class="col-form-label">Data:</label>
                                                     <input type="date" name="data" class="form-control" id="data" placeholder="Digite a data do agendamento">
                                                 </div>
-                                                <label for="agendamento" class="col-form-label">Agendamento:</label>
-                                                <textarea class="form-control" id="textarea" rows="3"></textarea>
+                                                <label for="descricao" class="col-form-label">Descricao:</label>
+                                                <textarea class="form-control" id="descricao" name="descricao" rows="2" placeholder="Digite a descrição"></textarea>
+                                                <div class="mb-2">
+                                                    <label for="local" class="col-form-label">Local:</label>
+                                                    <input type="text" name="local" class="form-control" id="local" placeholder="Digite o local do agendamento">
+                                                </div>   
+                                                <div class="mb-2">
+                                                    <label for="contato" class="col-form-label">Contato:</label>
+                                                    <input type="text" name="contato" class="form-control" id="contato" placeholder="Digite o número para contato">
+                                                </div>   
+                                                <div class="mb-2">
+                                                    <label for="status" class="col-form-label">Status:</label>
+                                                    <div>
+                                                    <input type="checkbox" id="coding" name="interest" value="coding" />
+                                                    <label for="coding">Ativo</label>
                                                 </div>
+                                                <div>
+                                                    <input type="checkbox" id="music" name="interest" value="music" />
+                                                    <label for="music">Inativo</label>
+                                                </div>
+                                                </div>  
+                                            </div>
+                                                
                                                 
                                             <div class="modal-footer">
                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>

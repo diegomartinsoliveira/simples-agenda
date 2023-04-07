@@ -2,8 +2,8 @@
 
 $host = 'localhost';
 $user = 'root';
-$pass = '';
-$dbname = 'crudphp';
+$pass = 'root';
+$dbname = 'dbagenda';
 
 try{
 
