@@ -1,5 +1,5 @@
 <?php
-include_once "conexao.php";
+include_once "../../connection/conexao.php";
 ?>
 
 <!DOCTYPE html>
@@ -10,10 +10,10 @@ include_once "conexao.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <title>Simples Agenda Online</title>
 </head>
-<img class="logo" src="img/logo.webp">
+<img class="logo" src="../../assets/img/logo.png">
 <body>
     <div class="container">
         <div class="row mt-2">
@@ -59,12 +59,12 @@ include_once "conexao.php";
                                                 <div class="mb-2">
                                                     <label for="status" class="col-form-label">Status:</label>
                                                     <div>
-                                                    <input type="checkbox" id="coding" name="interest" value="coding" />
-                                                    <label for="coding">Ativo</label>
+                                                    <input type="checkbox" id="check-ativo" name="status" value="1" />
+                                                    <label for="status">Ativo</label>
                                                 </div>
                                                 <div>
-                                                    <input type="checkbox" id="music" name="interest" value="music" />
-                                                    <label for="music">Inativo</label>
+                                                    <input type="checkbox" id="check-inativo" name="status" value="0" />
+                                                    <label for="status">Inativo</label>
                                                 </div>
                                                 </div>  
                                             </div>
@@ -93,16 +93,25 @@ include_once "conexao.php";
                                             <span id="msgAlertaErroVis"></span>
                                                 <dl class="row">
                                                     <dt class="col-sm-3">Código</dt>
-                                                    <dd class="col-sm-9"><span id="idUsuario"></span></dd>
+                                                    <dd class="col-sm-9"><span id="id_agendamento"></span></dd>
 
                                                     <dt class="col-sm-3">Nome</dt>
-                                                    <dd class="col-sm-9"><span id="nomeUsuario"></span></dd>
+                                                    <dd class="col-sm-9"><span id="nome"></span></dd>
 
                                                     <dt class="col-sm-3">Data</dt>
-                                                    <dd class="col-sm-9"><span id="dataUsuario"></span></dd>
+                                                    <dd class="col-sm-9"><span id="data"></span></dd>
 
-                                                    <dt class="col-sm-3">Mensagem</dt>
-                                                    <dd class="col-sm-9"><span id="agendamentoUsuario"></span></dd>
+                                                    <dt class="col-sm-3">Descrição</dt>
+                                                    <dd class="col-sm-9"><span id="descricao"></span></dd>
+
+                                                    <dt class="col-sm-3">Local</dt>
+                                                    <dd class="col-sm-9"><span id="local"></span></dd>
+
+                                                    <dt class="col-sm-3">Contato</dt>
+                                                    <dd class="col-sm-9"><span id="contato"></span></dd>
+
+                                                    <dt class="col-sm-3">Status</dt>
+                                                    <dd class="col-sm-9"><span id="status"></span></dd>
                                                 </dl>
                                          </div>
                                     </div>
@@ -123,7 +132,7 @@ include_once "conexao.php";
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="js/custom.js"></script>
+    <script src="../../assets/js/custom.js"></script>
 </body>
 
 </html>

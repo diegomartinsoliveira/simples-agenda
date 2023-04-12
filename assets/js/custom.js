@@ -5,7 +5,7 @@ const msgAlerta = document.getElementById("msgAlerta");
 const cadModal = new bootstrap.Modal(document.getElementById("cadUsuarioModal"));
 
 const listarUsuarios = async (pagina) => {
-   const dados = await fetch("./list.php?pagina=" + pagina);
+   const dados = await fetch("view/list.php?pagina=" + pagina);
    const resposta = await dados.text();
    tbody.innerHTML = resposta;
 
@@ -27,7 +27,7 @@ cadForm.addEventListener("submit", async (e) => {
 
    document.getElementById("cad-usuario-btn").value = "Salvando...";
    
-const dados = await fetch("cadastrar.php", {
+const dados = await fetch("model/cadastrar.php", {
       method:"POST",
       body: dadosForm,
    });
@@ -50,7 +50,7 @@ if(resposta['erro']){
 });
 
 async function visUsuario(id){
-	const dados = await fetch('visualizar.php?id=' + id)
+	const dados = await fetch('controller/visualizar.php?id=' + id)
    const resposta = await dados.json();
 
 if(resposta['erro']){
@@ -60,10 +60,13 @@ if(resposta['erro']){
       const visModal = new bootstrap.Modal(document.getElementById("visUsuarioModal"));
       visModal.show();
 
-      document.getElementById("idUsuario").innerHTML = resposta['dados'].id;
-      document.getElementById("nomeUsuario").innerHTML = resposta['dados'].nome;
-      document.getElementById("dataUsuario").innerHTML = resposta['dados'].data;
-      document.getElementById("agendamentoUsuario").innerHTML = resposta['dados'].agendamento;
+      document.getElementById("id_usuario").innerHTML = resposta['dados'].id;
+      document.getElementById("nome").innerHTML = resposta['dados'].nome;
+      document.getElementById("data").innerHTML = resposta['dados'].data;
+      document.getElementById("descricao").innerHTML = resposta['dados'].descricao;
+      document.getElementById("local").innerHTML = resposta['dados'].local;
+      document.getElementById("contato").innerHTML = resposta['dados'].contato;
+      document.getElementById("status").innerHTML = resposta['dados'].status;
       
       }
 }

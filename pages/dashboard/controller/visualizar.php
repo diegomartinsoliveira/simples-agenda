@@ -1,11 +1,11 @@
 <?php
-include_once "conexao.php";
+include_once "../../../connection/conexao.php";
 
 $id = filter_input(INPUT_GET, "id_usuario", FILTER_SANITIZE_NUMBER_INT);
 
 if(!empty($id)){
 
-    $query_usuario = "SELECT id_usuario, nome, data, agendamento FROM agendamentos WHERE id_usuario =:id_usuario LIMIT 1";
+    $query_usuario = "SELECT id_usuario, nome, data, descricao, local, status, contato FROM agendamentos WHERE id_usuario =:id_usuario LIMIT 1";
     $result_usuario = $conn->prepare($query_usuario);
     $result_usuario->bindParam(':id_usuario', $id);
     $result_usuario->execute();
