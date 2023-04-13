@@ -27,3 +27,8 @@ textarea {
     resize: none;
   }
 
+.botao-agendar button {
+    color:black;
+    font-weight: 500;
+  }
+

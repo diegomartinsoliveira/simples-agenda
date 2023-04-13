@@ -14,7 +14,7 @@ if(empty($dados['nome'])) {
 
 $query_usuario = "INSERT INTO agendamentos (id_usuario, nome, data, descricao, local, status, contato) VALUES (:id_usuario, :nome, :data, :descricao, :local, :status, :contato)";
 $cad_agendamento = $conn->prepare($query_usuario);
-$cad_agendamento->bindParam(':id_usario', $dados['id_usuario']);
+$cad_agendamento->bindParam(':id_usuario', $dados['id_usuario']);
 $cad_agendamento->bindParam(':nome', $dados['nome']);
 $cad_agendamento->bindParam(':data', $dados['data']);
 $cad_agendamento->bindParam(':descricao', $dados['descricao']);
@@ -25,9 +25,9 @@ $cad_agendamento->execute();
 
 if($cad_agendamento->rowCount()){
 
-    $retorna = ['erro' => false, 'msg' => "<div class='alert alert-success' role='alert'>Usuário cadastrado com sucesso!</div>"];
+    $retorna = ['erro' => false, 'msg' => "<div class='alert alert-success' role='alert'>Agendamento cadastrado com sucesso!</div>"];
 } else {
-    $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Usuário não cadastrado com sucesso!</div>"];
+    $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Agendamento não cadastrado!</div>"];
 }
     }
 

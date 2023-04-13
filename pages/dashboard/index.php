@@ -8,26 +8,26 @@ include_once "../../connection/conexao.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <title>Simples Agenda Online</title>
 </head>
-<img class="logo" src="../../assets/img/logo.png">
+
 <body>
     <div class="container">
         <div class="row mt-2">
             <div class="col-lg-12 d-flex justify-content-between align-items-center">
-               
-                <div>
+            <img class="logo" src="../../assets/img/logo.png">
+                <div class="botao-agendar">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-outline-primary" style="color:black;font-weight: 500;" data-bs-toggle="modal" data-bs-target="#cadUsuarioModal">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#cadUsuarioModal">
                     Agendar
                     </button>
+                </div>
                     <!-- Modal -->
-                    <div class="titulo-lista">
-                    <h4>Lista de Agendamentos</h4>
-                    </div>
                     <div class="modal fade" id="cadUsuarioModal" tabindex="-1" aria-labelledby="cadUsuarioModallLabel" aria-hidden="true">
                      <div class="modal-dialog">
                         <div class="modal-content" style="height:50%;">
@@ -38,6 +38,11 @@ include_once "../../connection/conexao.php";
                                             <div class="modal-body">
                                                 <form id="cad-usuario-form">
                                                     <span id="msgAlertaErroCad"></span>
+                                                    <span id="msgAlertaUsuario"></span>
+                                                    <label>Usuário: </label>
+                                                    <select class="form-select" aria-label="Default select example" name="id_usuario" id="id_usuario">
+                                                    <option selected>Selecionar Usuário</option>
+                                                    </select>
                                                 <div class="mb-2">
                                                     <label for="nome" class="col-form-label">Nome:</label>
                                                     <input type="text" name="nome" class="form-control" id="nome" placeholder="Digite o nome completo">
@@ -59,11 +64,11 @@ include_once "../../connection/conexao.php";
                                                 <div class="mb-2">
                                                     <label for="status" class="col-form-label">Status:</label>
                                                     <div>
-                                                    <input type="checkbox" id="check-ativo" name="status" value="1" />
+                                                    <input type="radio" class="checkbox-status" id="check-ativo" name="status" value="1" checked/>
                                                     <label for="status">Ativo</label>
                                                 </div>
                                                 <div>
-                                                    <input type="checkbox" id="check-inativo" name="status" value="0" />
+                                                    <input type="radio" class="checkbox-status" id="check-inativo" name="status" value="0" />
                                                     <label for="status">Inativo</label>
                                                 </div>
                                                 </div>  
@@ -124,15 +129,21 @@ include_once "../../connection/conexao.php";
         <div class="row">
             <div class="col-lg-12">
                 
-        <span class="listar-usuarios"></span>
+        <span class="listar-agendamentos"></span>
                         
 
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="../../assets/js/custom.js"></script>
 </body>
 
 </html>
+<script>
+$(document).ready( function () {
+    $('#table').DataTable();
+} );
+</script>

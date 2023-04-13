@@ -1,17 +1,18 @@
-const tbody = document.querySelector(".listar-usuarios");
+const tbody = document.querySelector(".listar-agendamentos");
 const cadForm = document.getElementById("cad-usuario-form");
 const msgAlertaErroCad = document.getElementById("msgAlertaErroCad");
 const msgAlerta = document.getElementById("msgAlerta");
 const cadModal = new bootstrap.Modal(document.getElementById("cadUsuarioModal"));
 
-const listarUsuarios = async (pagina) => {
+
+const listarAgendamentos = async (pagina) => {
    const dados = await fetch("view/list.php?pagina=" + pagina);
    const resposta = await dados.text();
    tbody.innerHTML = resposta;
 
 }
 
-listarUsuarios(1);
+listarAgendamentos(1);
 
 cadForm.addEventListener("submit", async (e) => {
    e.preventDefault();
@@ -41,7 +42,7 @@ if(resposta['erro']){
    msgAlerta.innerHTML = resposta['msg'];
    cadForm.reset();
    cadModal.hide();
-   listarUsuarios(1);
+   listarAgendamentos(1);
 }
 
    }
@@ -50,7 +51,7 @@ if(resposta['erro']){
 });
 
 async function visUsuario(id){
-	const dados = await fetch('controller/visualizar.php?id=' + id)
+	const dados = await fetch('controller/visualizar.php?id_agendamento=' + id)
    const resposta = await dados.json();
 
 if(resposta['erro']){
@@ -60,7 +61,7 @@ if(resposta['erro']){
       const visModal = new bootstrap.Modal(document.getElementById("visUsuarioModal"));
       visModal.show();
 
-      document.getElementById("id_usuario").innerHTML = resposta['dados'].id;
+      document.getElementById("id_agendamento").innerHTML = resposta['dados'].id;
       document.getElementById("nome").innerHTML = resposta['dados'].nome;
       document.getElementById("data").innerHTML = resposta['dados'].data;
       document.getElementById("descricao").innerHTML = resposta['dados'].descricao;
@@ -70,3 +71,36 @@ if(resposta['erro']){
       
       }
 }
+
+const usuario = document.getElementById("id_usuario");
+if (usuario) {
+    listarUsuarios();
+}
+
+async function listarUsuarios() {
+    const dados = await fetch('view/listar_usuarios.php');
+    const resposta = await dados.json();
+    //console.log(resposta);
+
+    if (resposta['id_usuario']) {
+        document.getElementById("msgAlertaUsuario").innerHTML = "";
+
+        var opcoes = '<option value="">Selecione</option>';
+        for (var i = 0; i < resposta.dados.length; i++) {
+            opcoes += '<option value="' + resposta.dados[i]['id'] + '">' + resposta.dados[i]['nome'] + '</option>';
+        }
+        usuario.innerHTML = opcoes;
+    } else {
+        document.getElementById("msgAlertaUsuario").innerHTML = resposta['msg'];
+    }
+}
+
+$(function limitarCheckbox(){
+   var MAX_SELECT = 1; // Máximo de 'input' selecionados
+   
+   $('input.checkbox-status').on('change', function(){
+     if( $(this).siblings(':checked').length >= MAX_SELECT ){
+        this.checked = false;
+     }
+   });
+ });
