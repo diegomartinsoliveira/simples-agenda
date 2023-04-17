@@ -13,7 +13,7 @@ $result_usuarios = $conn->prepare($query_usuarios);
 $result_usuarios->execute();
 
 $dados = "<div class='table-responsive' id='table'>
-                        <table class='table table-striped table-bordered'>
+                        <table class='table table-striped table-bordered' id='table'>
                             <thead>
                                 <tr>
                                     <th>Código</th>
