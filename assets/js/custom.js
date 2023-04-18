@@ -78,7 +78,7 @@ if (usuario) {
 }
 
 async function listarUsuarios() {
-    const dados = await fetch('view/listar_usuarios.php');
+    const dados = await fetch('view/listar_agendamentos.php');
     const resposta = await dados.json();
     //console.log(resposta);
 

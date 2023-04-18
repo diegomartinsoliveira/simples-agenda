@@ -12,7 +12,7 @@ $query_usuarios = "SELECT id_agendamento, nome, data, descricao, local, status, 
 $result_usuarios = $conn->prepare($query_usuarios);
 $result_usuarios->execute();
 
-$dados = "<div class='table-responsive' id='table'>
+$dados = "<div class='table-responsive' id='listar-agendamentos'>
                         <table class='table table-striped table-bordered' id='table'>
                             <thead>
                                 <tr>
@@ -58,6 +58,7 @@ while($row_usuario = $result_usuarios->fetch(PDO::FETCH_ASSOC)){
 $dados .= "</tbody>
         </table>
         </div>";
+        
 
 //somar a quantidade de usuarios
 $query_pg = "SELECT COUNT(id_agendamento) AS num_result FROM agendamentos";
@@ -93,6 +94,8 @@ echo $dados;
 }
 
 ?>
+
+
 
 
 

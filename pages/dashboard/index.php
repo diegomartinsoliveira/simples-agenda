@@ -137,19 +137,38 @@ include_once "../../connection/conexao.php";
         </div>
     </div>
 
+    <h1>Listar Agendamentos Datatable</h1>
+    <table id="listar-agendamentos" class="display" style="width:100%">
+        <thead>
+            <tr>
+                                    <th>Código</th>
+                                    <th width="300">Nome</th>
+                                    <th width="130">Data</th>
+                                    <th width="400">Descrição</th>
+                                    <th width="300">Local</th>
+                                    <th width="100">Contato</th>
+                                    <th width="50" style="text-align: center;">Status</th>
+                                    <th width="50" style="text-align: center;">Visualizar</th>
+                                    <th width="50" style="text-align: center;">Ações</th>
+            </tr>
+        </thead>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            $('#listar-agendamentos').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": "../view/listar_agendamentos.php"
+            });
+        });
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
     <script src="../../assets/js/custom.js"></script>
 </body>
-<script>
-$(document).ready( function () {
-    $('#table').DataTable();
-    "processing": true,
-    "serverSide": true,
-    "ajax": "list.php"
-} );
-</script>
 </html>
