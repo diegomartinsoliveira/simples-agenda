@@ -4,16 +4,6 @@ const msgAlertaErroCad = document.getElementById("msgAlertaErroCad");
 const msgAlerta = document.getElementById("msgAlerta");
 const cadModal = new bootstrap.Modal(document.getElementById("cadUsuarioModal"));
 
-
-const listarAgendamentos = async (pagina) => {
-   const dados = await fetch("view/list.php?pagina=" + pagina);
-   const resposta = await dados.text();
-   tbody.innerHTML = resposta;
-
-}
-
-listarAgendamentos(1);
-
 cadForm.addEventListener("submit", async (e) => {
    e.preventDefault();
 
@@ -94,13 +84,3 @@ async function listarUsuarios() {
         document.getElementById("msgAlertaUsuario").innerHTML = resposta['msg'];
     }
 }
-
-$(function limitarCheckbox(){
-   var MAX_SELECT = 1; // Máximo de 'input' selecionados
-   
-   $('input.checkbox-status').on('change', function(){
-     if( $(this).siblings(':checked').length >= MAX_SELECT ){
-        this.checked = false;
-     }
-   });
- });

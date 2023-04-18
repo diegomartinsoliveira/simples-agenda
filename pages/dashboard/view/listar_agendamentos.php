@@ -13,10 +13,10 @@ $row_qnt_agendamentos = $result_qnt_agendamentos->fetch(PDO::FETCH_ASSOC);
 //var_dump($row_qnt_agendamentos);
 
 // Recuperar os registros do banco de dados
-$query_agendamentos = "SELECT * FROM agendamentos ORDER BY id_agendamento DESC";
+$query_agendamentos = "SELECT id_agendamento, nome, data, descricao, local, contato, status FROM agendamentos ORDER BY id_agendamento DESC LIMIT :inicio, :quantidade"; //LIMIT :inicio, :quantidade
 $result_agendamentos = $conn->prepare($query_agendamentos);
-// $result_agendamentos->bindParam(':inicio', $dados_requisicao['start'], PDO::PARAM_INT);
-// $result_agendamentos->bindParam(':quantidade', $dados_requisicao['length'], PDO::PARAM_INT);
+$result_agendamentos->bindParam(':inicio', $dados_requisicao['start'], PDO::PARAM_INT);
+$result_agendamentos->bindParam(':quantidade', $dados_requisicao['length'], PDO::PARAM_INT);
 $result_agendamentos->execute();
 
 while($row_agendamento = $result_agendamentos->fetch(PDO::FETCH_ASSOC)){
@@ -28,16 +28,28 @@ while($row_agendamento = $result_agendamentos->fetch(PDO::FETCH_ASSOC)){
     $registro[] = $data;
     $registro[] = $descricao;
     $registro[] = $local;
-    $registro[] = $status;
     $registro[] = $contato;
+    $registro[] = $status;
     $dados[] = $registro;
 }
+
+                    // <td>
+                    // <div class='container'> 
+                    // <button id='$id_agendamento' i class='bi bi-eye botao-visualizar' onclick='visUsuario($id_agendamento)'></button>
+                    // </div> 
+                    // </i>
+                    // </td>
+                    // <td>
+                    // <div class='container'> 
+                    // <button id='$id_agendamento' i class='bi bi-text-center botao-acoes' onclick='visUsuario($id_agendamento)'></button>
+                    // </div> 
+                    // </td>
 
 //var_dump($dados);
 
 //Cria o array de informações a serem retornadas para o Javascript
 $resultado = [
-    // "draw" => intval($dados_requisicao['draw']), // Para cada requisição é enviado um número como parâmetro
+    "draw" => intval($dados_requisicao['draw']), // Para cada requisição é enviado um número como parâmetro
     "recordsTotal" => intval($row_qnt_agendamentos['qnt_agendamentos']), // Quantidade de registros que há no banco de dados
     "recordsFiltered" => intval($row_qnt_agendamentos['qnt_agendamentos']), // Total de registros quando houver pesquisa
     "data" => $dados // Array de dados com os registros retornados da tabela agendamentos
