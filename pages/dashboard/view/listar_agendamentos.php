@@ -5,6 +5,18 @@ include_once "../../../connection/conexao.php";
 //Receber os dados da requisão
 $dados_requisicao = $_REQUEST;
 
+//Lista de colunas
+
+$colunas = [
+    0 => 'id_agendamento',
+    1 => 'nome',
+    2 => 'data',
+    3 => 'descricao',
+    4 => 'local',
+    5 => 'contato',
+    6 => 'status'
+];
+
 // Obter a quantidade de registros no banco de dados
 $query_qnt_agendamentos = "SELECT COUNT(id_agendamento) AS qnt_agendamentos FROM agendamentos";
 $result_qnt_agendamentos = $conn->prepare($query_qnt_agendamentos);
@@ -13,7 +25,9 @@ $row_qnt_agendamentos = $result_qnt_agendamentos->fetch(PDO::FETCH_ASSOC);
 //var_dump($row_qnt_agendamentos);
 
 // Recuperar os registros do banco de dados
-$query_agendamentos = "SELECT id_agendamento, nome, data, descricao, local, contato, status FROM agendamentos ORDER BY id_agendamento DESC LIMIT :inicio, :quantidade"; //LIMIT :inicio, :quantidade
+$query_agendamentos = "SELECT id_agendamento, nome, data, descricao, local, contato, status FROM agendamentos"; 
+$query_agendamentos .= " ORDER BY " . $colunas[$dados_requisicao['order'][0]['column']] . " " .
+$dados_requisicao['order'][0]['dir'] . " LIMIT :inicio, :quantidade";
 $result_agendamentos = $conn->prepare($query_agendamentos);
 $result_agendamentos->bindParam(':inicio', $dados_requisicao['start'], PDO::PARAM_INT);
 $result_agendamentos->bindParam(':quantidade', $dados_requisicao['length'], PDO::PARAM_INT);

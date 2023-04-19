@@ -31,9 +31,9 @@ include_once "../../connection/conexao.php";
                     </button>
                 </div>
                     <!-- Modal -->
-                    <div class="modal fade" id="cadUsuarioModal" tabindex="-1" aria-labelledby="cadUsuarioModallLabel" aria-hidden="true">
+                    <div class="modal fade" id="cadUsuarioModal">
                      <div class="modal-dialog">
-                        <div class="modal-content" style="height:50%;">
+                        <div class="modal-content" style="">
                             <div class="modal-header">
                                  <h1 class="modal-title fs-5" id="cadUsuarioModalLabel">Agendar Cliente</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -67,21 +67,19 @@ include_once "../../connection/conexao.php";
                                                 <div class="form-group col-md-6">
                                                     <label>Status:</label><br>
                                                     <div class="btn-group btn-group-toggle tamanho-botao-ativo" data-toggle="buttons">
-                                                        <label class="btn btn-outline-info col-md-6 <?= "status ? 'active' : "");" ?>">
+                                                        <label class="btn btn-outline-info col-md-6 active">
                                                         <input type="radio" class="input-radio" name="status" value="0" checked>Ativo</label>
-                                                        <label class="btn btn-outline-info col-md-6 <?= "status ? 'active' : "");" ?>">
+                                                        <label class="btn btn-outline-info col-md-6">
                                                         <input type="radio" class="input-radio" name="status" value="1">Inativo</label>
                                                     </div>
-                                                </div>
-                                            </div> 
+                                                    </div>
                                             </div>
-                                                
-                                                
                                             <div class="modal-footer">
                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
                                     <input type="submit" class="btn btn-outline-success" id="cad-usuario-btn" value="Cadastrar" />
                                             </div>
                                                 </form>
+                                                </div>
                                          </div>
                                     </div>
                                 </div>
@@ -149,8 +147,6 @@ include_once "../../connection/conexao.php";
                 <th>Local</th>
                 <th>Contato</th>
                 <th>Status</th>
-                <th>Visualizar</th>
-                <th>Ações</th>
             </tr>
         </thead>
     </table>
