@@ -64,17 +64,16 @@ include_once "../../connection/conexao.php";
                                                     <label for="contato" class="col-form-label">Contato:</label>
                                                     <input type="text" name="contato" class="form-control" id="contato" placeholder="Digite o número para contato">
                                                 </div>   
-                                                <div class="mb-2">
-                                                    <label for="status" class="col-form-label">Status:</label>
-                                                    <div>
-                                                    <input type="radio" class="checkbox-status" id="check-ativo" name="status" value="1" checked/>
-                                                    <label for="status">Ativo</label>
+                                                <div class="form-group col-md-6">
+                                                    <label>Status:</label><br>
+                                                    <div class="btn-group btn-group-toggle tamanho-botao-ativo" data-toggle="buttons">
+                                                        <label class="btn btn-outline-info col-md-6 <?= "status ? 'active' : "");" ?>">
+                                                        <input type="radio" class="input-radio" name="status" value="0" checked>Ativo</label>
+                                                        <label class="btn btn-outline-info col-md-6 <?= "status ? 'active' : "");" ?>">
+                                                        <input type="radio" class="input-radio" name="status" value="1">Inativo</label>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <input type="radio" class="checkbox-status" id="check-inativo" name="status" value="0" />
-                                                    <label for="status">Inativo</label>
-                                                </div>
-                                                </div>  
+                                            </div> 
                                             </div>
                                                 
                                                 
