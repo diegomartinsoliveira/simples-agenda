@@ -20,16 +20,21 @@ include_once "../../connection/conexao.php";
 </head>
 
 <body>
-    <div class="container">
-        <div class="row mt-2">
+    <header class="cabecalho">
+   
+        <div class="row">
             <div class="col-lg-12 d-flex justify-content-between align-items-center">
             <img class="logo" src="../../assets/img/logo.png">
                 <div class="botao-agendar">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#cadUsuarioModal">
+                    <button type="button" class="btn btn-primary botao-agendar" data-bs-toggle="modal" data-bs-target="#cadUsuarioModal">
                     Agendar
                     </button>
                 </div>
+            </div>
+    </header>
+ 
+
                     <!-- Modal -->
                     <div class="modal fade" id="cadUsuarioModal">
                      <div class="modal-dialog">
@@ -124,7 +129,7 @@ include_once "../../connection/conexao.php";
                             </div>
                         </div>
                     </div>
-        <hr>
+        <br>
         <span id="msgAlerta"></span>
         <div class="row">
             <div class="col-lg-12">
@@ -135,8 +140,8 @@ include_once "../../connection/conexao.php";
             </div>
         </div>
     </div>
-
-    <h1>Listas de Agendamentos</h1>
+<div class="container">
+    <h4>Listas de Agendamentos</h4>
     <table id="listar-agendamento" class="display" style="width:100%">
         <thead>
             <tr>
@@ -150,7 +155,8 @@ include_once "../../connection/conexao.php";
             </tr>
         </thead>
     </table>
-
+</div>
+<br>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
