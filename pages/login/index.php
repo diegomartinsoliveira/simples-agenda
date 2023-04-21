@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Link CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <title>Login</title>
 </head>
 
@@ -16,19 +16,19 @@
         <div class="img-box">
             <center>
                 <div class="icone-logo">
-            <img class="img-logo" src="img/logo.png">
+            <img class="img-logo" src="../../assets/img/logo.png">
                 </div>
                 <div class="texto-entrar">
             <p class="texto-entrar">Tudo que você precisa para</p>
                 <p class="texto-entrar">fazer seu negócio decolar..</p>
             </div>
                 <div class="icone-agenda">
-            <img class="img-agenda" src="img/agenda.png">
+            <img class="img-agenda" src="../../assets/img/agenda.png">
                 </div>
             </center>
         </div>
         <div class="content-box bg-entrar">
-            <img style="display: none;" class="img-logo-desativada" src="img/logo.png">
+            <img style="display: none;" class="img-logo-desativada" src="../../assets/img/logo.png">
             <div class="form-box">
                 <h4 class="titulo-entrar">Entre na sua conta</h4>
                 <br>
@@ -56,7 +56,7 @@
                     <div class="input-box sem-conta">
                        <p>Ainda não possui uma conta? <a href="#">Criar conta</a></p>
                     </div>
-                    <img style="display:none;" class="img-agenda-desativada" src="img/agenda.png">
+                    <img style="display:none;" class="img-agenda-desativada" src="../../assets/img/agenda.png">
                 </form>
             </div>
         </div>
