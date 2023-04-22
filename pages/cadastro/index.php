@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div class="container-login">
+    <div class="container-cadastro">
         <div class="img-box">
             <center>
                 <div class="icone-logo">
@@ -31,7 +31,8 @@
             </center>
         </div>
         <div class="content-box bg-entrar">
-            <img style="display: none;" class="img-logo-desativada" src="../../assets/img/logo.png">
+            <img style="display: none;" class="img-logo-desativada-cadastro" src="../../assets/img/logo.png">
+            <img style="display:none;" class="img-agenda-desativada-cadastro" src="../../assets/img/agenda.png">
             <div class="form-box">
                 <h4 class="titulo-entrar">Seus dados de acesso</h4>
                 <br>
@@ -70,7 +71,6 @@
                        <p class="first-text">Ao continuar, você concorda com</p>
                         <p>os <a class="second-text" href="#">Termos</a> e <a class="second-text" href="#">Política de Privacidade.</a></p>
                     </div>
-                    <img style="display:none;" class="img-agenda-desativada" src="../../assets/img/agenda.png">
                 </form>
             </div>
         </div>

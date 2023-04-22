@@ -29,6 +29,7 @@
         </div>
         <div class="content-box bg-entrar">
             <img style="display: none;" class="img-logo-desativada" src="../../assets/img/logo.png">
+            <img style="display:none;" class="img-agenda-desativada" src="../../assets/img/agenda.png">
             <div class="form-box">
                 <h4 class="titulo-entrar">Entre na sua conta</h4>
                 <br>
@@ -56,7 +57,6 @@
                     <div class="input-box sem-conta">
                        <p>Ainda não possui uma conta? <a href="#">Criar conta</a></p>
                     </div>
-                    <img style="display:none;" class="img-agenda-desativada" src="../../assets/img/agenda.png">
                 </form>
             </div>
         </div>

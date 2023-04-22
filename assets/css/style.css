@@ -34,6 +34,14 @@ textarea {
   display: none;
 }
 
+.texto-entrar {
+  color:#000000;
+  text-align: center;
+  font-weight: 600;
+  font-size: 24px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .cabecalho {
   background-color: #00C2FF;
   height: 100%;
@@ -48,7 +56,8 @@ textarea {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.container-login {
+.container-login,
+.container-cadastro {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -268,6 +277,7 @@ textarea {
 .tem-conta {
   position: relative;
   top: -10px;
+  padding-left: 20px;
 }
 
 .content-box .form-box .remember a{
@@ -303,25 +313,71 @@ textarea {
   .img-box{
       display: none;
   }
+  .content-box .form-box .remember a{
+    color: #ffffff;
+    padding-left: 76%;
+    margin: -15px;
+  }
   .container-login .content-box{
       width: 100%;
   }
   .container-login .content-box .form-box{
       width: 100%;
-      padding: 40px;
       background: #5bb4ff;
       margin: 50px;
   } 
   .container-login .content-box .form-box h3{
       margin: 30px 0 10px;
   } 
+  .container-cadastro .content-box{
+    width: 100%;
+  }
+.container-cadastro .content-box .form-box{
+    width: 100%;
+    background: #5bb4ff;
+    margin: 135px;
+    padding-top: 15px;
+} 
+.container-cadastro .content-box .form-box h3{
+    margin: 30px 0 10px;
+    } 
+
+  .bg-entrar {
+  background-color: #5bb4ff;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+    }
+
+    .img-logo-desativada {
+      width: 163px;
+      height: 43px;   
+      display: block !important;
+      position: absolute;
+      top: 45px !important;
+  }
+  
+  .img-agenda-desativada {
+      width: 100px;
+      height: 100px;
+      display: block !important;
+      position: absolute;
+      top: 501px;
+  }
+
 }
+
+
 @media (max-width:450px) {
   .container-login .content-box .form-box .remember{
       flex-wrap: wrap;
   }
+
+  .container-cadastro .content-box .form-box .remember-cadastro{
+    flex-wrap: wrap;
+}
+
   .container-login .content-box .form-box .remember a{
-      padding-left: 60px;
+      padding-left: 205px;
       font-size: 12px;
   }
   .content-box .form-box .input-box p {
@@ -353,16 +409,15 @@ textarea {
       display: block !important;
       position: absolute;
       top: 518px;
-      margin-left: 42px;
   }
-  
-  .texto-entrar {
-      color:#000000;
-      text-align: center;
-      font-weight: 600;
-      font-size: 24px;
-      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+
+  .img-logo-desativada-cadastro {
+    width: 163px;
+    height: 43px;   
+    display: block !important;
+    position: absolute;
+    top: 15px;
+}
 
   .img-box {
       width: 50%;
@@ -370,6 +425,12 @@ textarea {
       background-color: #ffffff;
       padding: 20px;
   }
+
+  .container-cadastro .content-box .form-box{
+    width: 100%;
+    background: #5bb4ff;
+    margin: 50px;
+} 
   
 }
 
