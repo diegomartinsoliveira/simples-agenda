@@ -46,8 +46,8 @@ if(resposta['erro']){
    document.getElementById("cad-usuario-btn").value = "Cadastrar";
 });
 
-async function visUsuario(id){
-	const dados = await fetch('controller/visualizar.php?id_agendamento=' + id)
+async function visUsuario(id_agendamento){
+	const dados = await fetch('controller/visualizar.php?id_agendamento=' + id_agendamento)
    const resposta = await dados.json();
 
 if(resposta['erro']){
@@ -57,13 +57,13 @@ if(resposta['erro']){
       const visModal = new bootstrap.Modal(document.getElementById("visUsuarioModal"));
       visModal.show();
 
-      document.getElementById("id_agendamento").innerHTML = resposta['dados'].id_agendamento;
-      document.getElementById("nome").innerHTML = resposta['dados'].nome;
-      document.getElementById("data").innerHTML = resposta['dados'].data;
-      document.getElementById("descricao").innerHTML = resposta['dados'].descricao;
-      document.getElementById("local").innerHTML = resposta['dados'].local;
-      document.getElementById("contato").innerHTML = resposta['dados'].contato;
-      document.getElementById("status").innerHTML = resposta['dados'].status;
+      document.getElementById("idAgendamento").innerHTML = resposta['dados'].id_agendamento;
+      document.getElementById("nomeAgendamento").innerHTML = resposta['dados'].nome;
+      document.getElementById("dataAgendamento").innerHTML = resposta['dados'].data;
+      document.getElementById("descricaoAgendamento").innerHTML = resposta['dados'].descricao;
+      document.getElementById("localAgendamento").innerHTML = resposta['dados'].local;
+      document.getElementById("contatoAgendamento").innerHTML = resposta['dados'].contato;
+      document.getElementById("statusAgendamento").innerHTML = resposta['dados'].status;
       
       }
 }

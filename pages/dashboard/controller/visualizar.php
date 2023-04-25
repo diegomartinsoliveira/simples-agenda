@@ -1,13 +1,13 @@
 <?php
 include_once "../../../connection/conexao.php";
 
-$id = filter_input(INPUT_GET, "id_agendamento", FILTER_SANITIZE_NUMBER_INT);
+$id_agendamento = filter_input(INPUT_GET, "id_agendamento", FILTER_SANITIZE_NUMBER_INT);
 
-if(!empty($id)){
+if(!empty($id_agendamento)){
 
-    $query_usuario = "SELECT id_agendamento, nome, data, descricao, local, status, contato FROM agendamentos WHERE id_agendamento =:id_agendamento LIMIT 1";
+    $query_usuario = "SELECT id_agendamento, nome, data, descricao, local, IF(ag.status = '0', 'Ativo', 'Inativo') as status, contato FROM agendamentos ag WHERE id_agendamento =:id_agendamento LIMIT 1";
     $result_usuario = $conn->prepare($query_usuario);
-    $result_usuario->bindParam(':id_agendamento', $id);
+    $result_usuario->bindParam(':id_agendamento', $id_agendamento);
     $result_usuario->execute();
 
     $row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);

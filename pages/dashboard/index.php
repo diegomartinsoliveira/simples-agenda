@@ -14,7 +14,6 @@ include_once "../../connection/conexao.php";
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <title>Simples Agenda Online</title>
 </head>
@@ -103,25 +102,25 @@ include_once "../../connection/conexao.php";
                                             <span id="msgAlertaErroVis"></span>
                                                 <dl class="row">
                                                     <dt class="col-sm-3">Código</dt>
-                                                    <dd class="col-sm-9"><span id="id_agendamento"></span></dd>
+                                                    <dd class="col-sm-9"><span id="idAgendamento"></span></dd>
 
                                                     <dt class="col-sm-3">Nome</dt>
-                                                    <dd class="col-sm-9"><span id="nome"></span></dd>
+                                                    <dd class="col-sm-9"><span id="nomeAgendamento"></span></dd>
 
                                                     <dt class="col-sm-3">Data</dt>
-                                                    <dd class="col-sm-9"><span id="data"></span></dd>
+                                                    <dd class="col-sm-9"><span id="dataAgendamento"></span></dd>
 
                                                     <dt class="col-sm-3">Descrição</dt>
-                                                    <dd class="col-sm-9"><span id="descricao"></span></dd>
+                                                    <dd class="col-sm-9"><span id="descricaoAgendamento"></span></dd>
 
                                                     <dt class="col-sm-3">Local</dt>
-                                                    <dd class="col-sm-9"><span id="local"></span></dd>
+                                                    <dd class="col-sm-9"><span id="localAgendamento"></span></dd>
 
                                                     <dt class="col-sm-3">Contato</dt>
-                                                    <dd class="col-sm-9"><span id="contato"></span></dd>
+                                                    <dd class="col-sm-9"><span id="contatoAgendamento"></span></dd>
 
                                                     <dt class="col-sm-3">Status</dt>
-                                                    <dd class="col-sm-9"><span id="status"></span></dd>
+                                                    <dd class="col-sm-9"><span id="statusAgendamento"></span></dd>
                                                 </dl>
                                          </div>
                                     </div>
@@ -130,7 +129,6 @@ include_once "../../connection/conexao.php";
                         </div>
                     </div>
         <br>
-        <span id="msgAlerta"></span>
         <div class="row">
             <div class="col-lg-12">                      
 
@@ -138,6 +136,7 @@ include_once "../../connection/conexao.php";
         </div>
     </div>
 <div class="container">
+<span id="msgAlerta"></span>
     <h4>Listas de Agendamentos</h4>
     <table id="listar-agendamento" class="display" style="width:100%">
         <thead>
@@ -149,6 +148,8 @@ include_once "../../connection/conexao.php";
                 <th>Local</th>
                 <th>Contato</th>
                 <th>Status</th>
+                <th>Detalhes</th>
+                <th>Ações</th>
             </tr>
         </thead>
     </table>
@@ -157,8 +158,6 @@ include_once "../../connection/conexao.php";
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
     <script src="../../assets/js/custom.js"></script>

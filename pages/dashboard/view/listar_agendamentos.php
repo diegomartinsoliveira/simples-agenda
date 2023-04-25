@@ -50,7 +50,7 @@ $row_qnt_agendamentos = $result_qnt_agendamentos->fetch(PDO::FETCH_ASSOC);
 //var_dump($row_qnt_agendamentos);
 
 // Recuperar os registros do banco de dados
-$query_agendamentos = "SELECT id_agendamento, nome, data, descricao, local, contato, status FROM agendamentos"; 
+$query_agendamentos = "SELECT id_agendamento, nome, data, descricao, local, contato, IF(ag.status = '0', 'Ativo', 'Inativo') as status FROM agendamentos ag"; 
 
 // Acessa o IF quando ha paramentros de pesquisa   
 if(!empty($dados_requisicao['search']['value'])) {
@@ -97,21 +97,13 @@ while($row_agendamento = $result_agendamentos->fetch(PDO::FETCH_ASSOC)){
     $registro[] = $descricao;
     $registro[] = $local;
     $registro[] = $contato;
-    $registro[] = $status;
+    $registro[] = "<div class='text-center'>$status</div>";
+    $registro[] = "<button id='$id_agendamento' i class='bi bi-eye botao-acoes' onclick='visUsuario($id_agendamento)'></i></button></div>";
+    $registro[] = "<div class='container'><button id='$id_agendamento' i class='bi bi-text-center botao-acoes' onclick='visUsuario($id_agendamento)'></i></button></div>";
     $dados[] = $registro;
 }
-
-                    // <td>
-                    // <div class='container'> 
-                    // <button id='$id_agendamento' i class='bi bi-eye botao-visualizar' onclick='visUsuario($id_agendamento)'></button>
-                    // </div> 
-                    // </i>
-                    // </td>
-                    // <td>
-                    // <div class='container'> 
-                    // <button id='$id_agendamento' i class='bi bi-text-center botao-acoes' onclick='visUsuario($id_agendamento)'></button>
-                    // </div> 
-                    // </td>
+                     
+                  
 
 //var_dump($dados);
 
