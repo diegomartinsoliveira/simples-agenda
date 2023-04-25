@@ -37,8 +37,8 @@ include_once "../../connection/conexao.php";
 
                     <!-- Modal -->
                     <div class="modal fade" id="cadUsuarioModal">
-                     <div class="modal-dialog">
-                        <div class="modal-content" style="">
+                     <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-content">
                             <div class="modal-header">
                                  <h1 class="modal-title fs-5" id="cadUsuarioModalLabel">Agendar Cliente</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -51,10 +51,10 @@ include_once "../../connection/conexao.php";
                                                     <select class="form-select" aria-label="Default select example" name="id_usuario" id="id_usuario">
                                                     <option selected>Selecionar Usuário</option>
                                                     </select>
-                                                <div class="mb-2">
+                                                    <div class="mb-2">
                                                     <label for="nome" class="col-form-label">Nome:</label>
                                                     <input type="text" name="nome" class="form-control" id="nome" placeholder="Digite o nome completo">
-                                                </div>
+                                                    </div>
                                                 <div class="mb-2">
                                                 <label for="email" class="col-form-label">Data:</label>
                                                     <input type="date" name="data" class="form-control" id="data" placeholder="Digite a data do agendamento">
@@ -71,11 +71,12 @@ include_once "../../connection/conexao.php";
                                                 </div>   
                                                 <div class="form-group col-md-6">
                                                     <label>Status:</label><br>
-                                                    <div class="btn-group btn-group-toggle tamanho-botao-ativo" data-toggle="buttons">
-                                                        <label class="btn btn-outline-info col-md-6 active">
-                                                        <input type="radio" class="input-radio" name="status" value="0" checked>Ativo</label>
-                                                        <label class="btn btn-outline-info col-md-6">
-                                                        <input type="radio" class="input-radio" name="status" value="1">Inativo</label>
+                                                    <div class="btn-group tamanho-botao-ativo" role="group" aria-label="Basic radio toggle button group">
+                                                    <input type="radio" class="btn-check" name="status" id="ativo" autocomplete="off" checked>
+                                                    <label class="btn btn-outline-primary" for="ativo">Ativo</label>
+
+                                                    <input type="radio" class="btn-check" name="status" id="inativo" autocomplete="off">
+                                                    <label class="btn btn-outline-primary" for="inativo">Inativo</label>
                                                     </div>
                                                     </div>
                                             </div>
@@ -91,7 +92,6 @@ include_once "../../connection/conexao.php";
                             </div>
                         </div>
                     </div>
-
                     <div class="modal fade" id="visUsuarioModal" tabindex="-1" aria-labelledby="visUsuarioModallLabel" aria-hidden="true">
                      <div class="modal-dialog">
                         <div class="modal-content">
@@ -132,10 +132,7 @@ include_once "../../connection/conexao.php";
         <br>
         <span id="msgAlerta"></span>
         <div class="row">
-            <div class="col-lg-12">
-                
-        <span class="listar-agendamentos"></span>
-                        
+            <div class="col-lg-12">                      
 
             </div>
         </div>
@@ -171,7 +168,11 @@ include_once "../../connection/conexao.php";
             $('#listar-agendamento').DataTable({
                 "processing": true,
                 "serverSide": true,
-                "ajax": "view/listar_agendamentos.php"
+                "ajax": "view/listar_agendamentos.php",
+                "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/pt-BR.json"
+                }
+               
             });
         });
     </script>

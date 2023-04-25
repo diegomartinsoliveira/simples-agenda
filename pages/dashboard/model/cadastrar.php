@@ -12,15 +12,15 @@ if(empty($dados['nome'])) {
     $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Necessário preencher o campo e-mail!</div>"];
 } else {
 
-$query_usuario = "INSERT INTO agendamentos (id_usuario, nome, data, descricao, local, status, contato) VALUES (:id_usuario, :nome, :data, :descricao, :local, :status, :contato)";
+$query_usuario = "INSERT INTO agendamentos (id_usuario, nome, data, descricao, local, contato, status) VALUES (:id_usuario, :nome, :data, :descricao, :local, :contato, :status)";
 $cad_agendamento = $conn->prepare($query_usuario);
 $cad_agendamento->bindParam(':id_usuario', $dados['id_usuario']);
 $cad_agendamento->bindParam(':nome', $dados['nome']);
 $cad_agendamento->bindParam(':data', $dados['data']);
 $cad_agendamento->bindParam(':descricao', $dados['descricao']);
 $cad_agendamento->bindParam(':local', $dados['local']);
-$cad_agendamento->bindParam(':status', $dados['status']);
 $cad_agendamento->bindParam(':contato', $dados['contato']);
+$cad_agendamento->bindParam(':status', $dados['status']);
 $cad_agendamento->execute();
 
 if($cad_agendamento->rowCount()){
