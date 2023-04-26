@@ -1,4 +1,5 @@
 const cadForm = document.getElementById("cad-usuario-form");
+const editForm = document.getElementById("edit-usuario-form");
 const msgAlertaErroCad = document.getElementById("msgAlertaErroCad");
 const msgAlerta = document.getElementById("msgAlerta");
 const cadModal = new bootstrap.Modal(document.getElementById("cadUsuarioModal"));
@@ -90,3 +91,58 @@ async function listarUsuarios() {
         document.getElementById("msgAlertaUsuario").innerHTML = resposta['msg'];
     }
 }
+
+const editModal = new bootstrap.Modal(document.getElementById("editUsuarioModal"));
+async function editarAgendamento(id_agendamento) {
+   //console.log("Editar: " + id_agendamento);
+
+   const dados = await fetch('controller/visualizar.php?id_agendamento=' + id_agendamento);
+   const resposta = await dados.json();
+   //console.log(resposta);
+
+   if (resposta['erro']) {
+      document.getElementById("msgAlerta").innerHTML = "";
+
+  } else {
+      const editModal = new bootstrap.Modal(document.getElementById("editUsuarioModal"));
+      editModal.show();
+
+      document.getElementById("editid").innerHTML = resposta['dados'].id_agendamento;
+      document.getElementById("editnome").innerHTML = resposta['dados'].nome;
+      document.getElementById("editdata").innerHTML = resposta['dados'].data;
+      document.getElementById("editdescricao").innerHTML = resposta['dados'].descricao;
+      document.getElementById("editlocal").innerHTML = resposta['dados'].local;
+      document.getElementById("editcontato").innerHTML = resposta['dados'].contato;
+      document.getElementById("editstatus").innerHTML = resposta['dados'].status;
+  }
+
+}
+
+editForm.addEventListener("submit", async (e) => {
+   e.preventDefault();
+
+   document.getElementById("edit-usuario-btn").value = "Salvando...";
+
+   const dadosForm = new FormData(editForm);
+   //console.log(dadosForm);
+   /*for (var dadosFormEdit of dadosForm.entries()){
+       console.log(dadosFormEdit[0] + " - " + dadosFormEdit[1]);
+   }*/
+
+   const dados = await fetch("editar.php", {
+       method: "POST",
+       body:dadosForm
+   });
+
+   const resposta = await dados.json();
+   //console.log(resposta);
+
+   if(resposta['erro']){
+       msgAlertaErroEdit.innerHTML = resposta['msg'];
+   }else{
+       msgAlertaErroEdit.innerHTML = resposta['msg'];
+       listarUsuarios(1);
+   }
+
+   document.getElementById("edit-usuario-btn").value = "Salvar";
+});

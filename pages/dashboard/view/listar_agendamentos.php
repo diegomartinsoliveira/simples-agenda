@@ -97,9 +97,8 @@ while($row_agendamento = $result_agendamentos->fetch(PDO::FETCH_ASSOC)){
     $registro[] = $status == 'Ativo' ? "<button type='button' class='btn btn-success'>Ativo</button>" : "<button type='button' class='btn btn-danger'>Inativo</button>";
     $registro[] = "<button id='$id_agendamento' i class='bi bi-eye botao-acoes container' onclick='visUsuario($id_agendamento)'></i></button>";
     $registro[] = "<div class='btn-group container' role='group' aria-label='Basic example'>
-    <button type='button' class='btn btn-primary'>Editar</button>
-    <button type='button' class='btn btn-danger'>Deletar</button>
-  </div>";
+    <button id='$id_agendamento' class='btn btn-primary' onclick='editarAgendamento($id_agendamento)'>Editar</button>
+    <button id='$id_agendamento' class='btn btn-danger' onclick='deletarAgendamento($id_agendamento)'>Deletar</button></div>";
     $dados[] = $registro;
 }
                      
