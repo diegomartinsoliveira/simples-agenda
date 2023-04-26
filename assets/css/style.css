@@ -1,11 +1,11 @@
-.botao-visualizar,
+
 .botao-acoes {
     color: #000000;
     cursor: pointer;
     border: none;
     background: none;
-    align-items: center;
     font-size: 25px;
+    text-align: center;
 }
 
 .logo {
@@ -434,49 +434,12 @@ textarea {
   
 }
 
-.modal .modal-content {
-  background-color: #F5F7FA;
+.container-agendamentos {
+  padding: 40px;
 }
 
-.modal.leftright-slide {
-  display: flex !important;
-  pointer-events: none;
-}
-
-.modal.leftright-slide * {
-  pointer-events: none;
-}
-
-.modal.leftright-slide .modal-dialog {
-  margin: 0px;
-  display: flex;
-  flex: auto;
-  transform: translate(25%, 0);
-}
-
-.modal.leftright-slide .modal-dialog .modal-content {
-  border: none;
-  border-radius: 0px;
-}
-
-.modal.leftright-slide.show {
-  pointer-events: auto;
-}
-
-.modal.leftright-slide.show * {
-  pointer-events: auto;
-}
-
-.modal.leftright-slide.show .modal-dialog {
-  transform: translate(0, 0);
-}
-
-.modal.leftright-slide.right-align {
-  flex-direction: row-reverse;
-}
-
-.modal.leftright-slide.left-align:not(.show) .modal-dialog {
-  transform: translate(-25%, 0);
+.dataTables_filter {
+  padding-bottom: 10px;
 }
 
 
