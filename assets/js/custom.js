@@ -31,6 +31,8 @@ const dados = await fetch("model/cadastrar.php", {
       body: dadosForm,
    });
 
+   console.log(dados);
+
 const resposta = await dados.json();
 
 if(resposta['erro']){
@@ -41,6 +43,8 @@ if(resposta['erro']){
    cadForm.reset();
    cadModal.hide();
 }
+
+$("#listar-agendamento").DataTable().ajax.reload();
 
    }
 

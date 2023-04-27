@@ -52,7 +52,7 @@ $row_qnt_agendamentos = $result_qnt_agendamentos->fetch(PDO::FETCH_ASSOC);
 // Recuperar os registros do banco de dados
 $query_agendamentos = "SELECT id_agendamento, nome, data, descricao, local, contato, IF(ag.status = '0', 'Ativo', 'Inativo') as status FROM agendamentos ag"; 
 
-// Acessa o IF quando ha paramentros de pesquisa   
+// Acessa o IF quando ha parametros de pesquisa   
 if(!empty($dados_requisicao['search']['value'])) {
     $query_agendamentos .= " WHERE id_agendamento LIKE :id_agendamento ";
     $query_agendamentos .= " OR nome LIKE :nome ";
@@ -64,8 +64,7 @@ if(!empty($dados_requisicao['search']['value'])) {
 }
 
 // Ordenar os registros
-$query_agendamentos .= " ORDER BY " . $colunas[$dados_requisicao['order'][0]['column']] . " " .
-$dados_requisicao['order'][0]['dir'] . " LIMIT :inicio, :quantidade";
+$query_agendamentos .= " ORDER BY " . $colunas[$dados_requisicao['order'][0]['column']] . " " . $dados_requisicao['order'][0]['dir'] . " LIMIT :inicio , :quantidade";
 
 // Preparar a QUERY
 $result_agendamentos = $conn->prepare($query_agendamentos);
@@ -83,9 +82,10 @@ if(!empty($dados_requisicao['search']['value'])) {
     $result_agendamentos->bindParam(':contato', $valor_pesq, PDO::PARAM_STR);
     $result_agendamentos->bindParam(':status', $valor_pesq, PDO::PARAM_STR);
 }
+
 // Executa Query
 $result_agendamentos->execute();
-
+$dados = array();
 // Ler os registros retornado do banco de dados e atribuir no array 
 while($row_agendamento = $result_agendamentos->fetch(PDO::FETCH_ASSOC)){
     //var_dump($row_agendamento);
@@ -100,9 +100,7 @@ while($row_agendamento = $result_agendamentos->fetch(PDO::FETCH_ASSOC)){
     <button id='$id_agendamento' class='btn btn-primary' onclick='editarAgendamento($id_agendamento)'>Editar</button>
     <button id='$id_agendamento' class='btn btn-danger' onclick='deletarAgendamento($id_agendamento)'>Deletar</button></div>";
     $dados[] = $registro;
-}
-                     
-                  
+}            
 
 //var_dump($dados);
 
@@ -115,6 +113,6 @@ $resultado = [
 ];
 
 //var_dump($resultado);
-
-// Retornar os dados em formato de objeto para o JavaScript
 echo json_encode($resultado);
+// Retornar os dados em formato de objeto para o JavaScript
+

@@ -70,10 +70,10 @@ include_once "../../connection/conexao.php";
                                                 <div class="form-group col-md-6">
                                                     <label>Status:</label><br>
                                                     <div class="btn-group tamanho-botao-ativo" role="group" aria-label="Basic radio toggle button group">
-                                                    <input type="radio" class="btn-check" name="status" id="ativo" autocomplete="off" checked>
+                                                    <input type="radio" class="btn-check" name="status" id="ativo" autocomplete="off" checked value="0">
                                                     <label class="btn btn-outline-primary" for="ativo">Ativo</label>
 
-                                                    <input type="radio" class="btn-check" name="status" id="inativo" autocomplete="off">
+                                                    <input type="radio" class="btn-check" name="status" id="inativo" autocomplete="off" value="1">
                                                     <label class="btn btn-outline-primary" for="inativo">Inativo</label>
                                                     </div>
                                                     </div>
