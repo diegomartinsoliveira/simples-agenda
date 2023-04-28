@@ -4,6 +4,18 @@ const msgAlertaErroCad = document.getElementById("msgAlertaErroCad");
 const msgAlerta = document.getElementById("msgAlerta");
 const cadModal = new bootstrap.Modal(document.getElementById("cadUsuarioModal"));
 
+$(document).ready(function() {
+   $('#listar-agendamento').DataTable({
+       "processing": true,
+       "serverSide": true,
+       "ajax": "view/listar_agendamentos.php",
+       "language": {
+       "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/pt-BR.json"
+       }
+      
+   });
+});
+
 cadForm.addEventListener("submit", async (e) => {
    e.preventDefault();
 
@@ -98,55 +110,59 @@ async function listarUsuarios() {
 
 const editModal = new bootstrap.Modal(document.getElementById("editUsuarioModal"));
 async function editarAgendamento(id_agendamento) {
-   //console.log("Editar: " + id_agendamento);
+    //console.log("Editar: " + id);
 
-   const dados = await fetch('controller/visualizar.php?id_agendamento=' + id_agendamento);
-   const resposta = await dados.json();
-   //console.log(resposta);
+    const dados = await fetch('controller/visualizar.php?id_agendamento=' + id_agendamento);
+    const resposta = await dados.json();
+    console.log(resposta);
 
-   if (resposta['erro']) {
-      document.getElementById("msgAlerta").innerHTML = "";
+    if (resposta['erro']) {
+        document.getElementById("msgAlertaErroEdit").innerHTML = "";
 
-  } else {
-      const editModal = new bootstrap.Modal(document.getElementById("editUsuarioModal"));
-      editModal.show();
+        document.getElementById("msgAlerta").innerHTML = "";
+        editModal.show();
 
-      document.getElementById("editid").innerHTML = resposta['dados'].id_agendamento;
-      document.getElementById("editnome").innerHTML = resposta['dados'].nome;
-      document.getElementById("editdata").innerHTML = resposta['dados'].data;
-      document.getElementById("editdescricao").innerHTML = resposta['dados'].descricao;
-      document.getElementById("editlocal").innerHTML = resposta['dados'].local;
-      document.getElementById("editcontato").innerHTML = resposta['dados'].contato;
-      document.getElementById("editstatus").innerHTML = resposta['dados'].status;
-  }
-
+      document.getElementById("editid").value = resposta['dados'].id_agendamento;
+      document.getElementById("editnome").value = resposta['dados'].nome;
+      document.getElementById("editdata").value = resposta['dados'].data;
+      document.getElementById("editdescricao").value = resposta['dados'].descricao;
+      document.getElementById("editlocal").value = resposta['dados'].local;
+      document.getElementById("editcontato").value = resposta['dados'].contato;
+      document.getElementById("editstatus").value = resposta['dados'].status;
+    } else {
+        document.getElementById("msgAlerta").innerHTML = resposta['msg'];
+    }
 }
 
-editForm.addEventListener("submit", async (e) => {
-   e.preventDefault();
+const formEditUser = document.getElementById("edit-usuario-form");
+if (formEditUser) {
+    formEditUser.addEventListener("submit", async(e) => {
+        e.preventDefault();
+        const dadosForm = new FormData(formEditUser);
 
-   document.getElementById("edit-usuario-btn").value = "Salvando...";
+        const dados = await fetch("controller/editar.php", {
+            method: "POST",
+            body: dadosForm
+        });
 
-   const dadosForm = new FormData(editForm);
-   //console.log(dadosForm);
-   /*for (var dadosFormEdit of dadosForm.entries()){
-       console.log(dadosFormEdit[0] + " - " + dadosFormEdit[1]);
-   }*/
+        const resposta = await dados.json();
 
-   const dados = await fetch("editar.php", {
-       method: "POST",
-       body:dadosForm
-   });
+        if (resposta['erro']) {
+            // Manter a janela modal aberta
+            //document.getElementById("msgAlertErroEdit").innerHTML = resposta['msg'];
 
-   const resposta = await dados.json();
-   //console.log(resposta);
+            // Fechar a janela modal
+            document.getElementById("msgAlerta").innerHTML = resposta['msg'];
+            document.getElementById("msgAlertErroEdit").innerHTML = "";
+            // Limpar o formulario
+            formEditUser.reset();
+            editModal.hide();
 
-   if(resposta['erro']){
-       msgAlertaErroEdit.innerHTML = resposta['msg'];
-   }else{
-       msgAlertaErroEdit.innerHTML = resposta['msg'];
-       listarUsuarios(1);
-   }
-
-   document.getElementById("edit-usuario-btn").value = "Salvar";
-});
+            // Atualizar a lista de registros
+            listarDataTables = $('#listar-agendamento').DataTable();
+            listarDataTables.draw();
+        } else {
+            document.getElementById("msgAlertErroEdit").innerHTML = resposta['msg'];
+        }
+    });
+}

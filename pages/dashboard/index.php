@@ -143,7 +143,7 @@ include_once "../../connection/conexao.php";
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                          </div>
                                             <div class="modal-body">
-                                                <form id="edit-usuario-form">
+                                                <form method="POST" id="edit-usuario-form">
                                                     <span id="msgAlertaErroEdit"></span>
                                                     <span id="msgAlertaUsuario"></span>
                                                     <input type="hidden" name="id_agendamento" id="editid">
@@ -156,7 +156,7 @@ include_once "../../connection/conexao.php";
                                                     <input type="date" name="data" class="form-control" id="editdata">
                                                 </div>
                                                 <label for="descricao" class="col-form-label">Descricao:</label>
-                                                <textarea class="form-control" id="descricao" name="editdescricao" rows="2"></textarea>
+                                                <textarea class="form-control" name="descricao" id="editdescricao" rows="2"></textarea>
                                                 <div class="mb-2">
                                                     <label for="local" class="col-form-label">Local:</label>
                                                     <input type="text" name="local" class="form-control" id="editlocal">
@@ -168,17 +168,17 @@ include_once "../../connection/conexao.php";
                                                 <div class="form-group col-md-6">
                                                     <label>Status:</label><br>
                                                     <div class="btn-group tamanho-botao-ativo" role="group" aria-label="Basic radio toggle button group">
-                                                    <input type="radio" class="btn-check" name="status" id="ativo" autocomplete="off" checked>
+                                                    <input type="radio" class="btn-check" name="status" id="editstatus" autocomplete="off" checked value="0">
                                                     <label class="btn btn-outline-primary" for="ativo">Ativo</label>
 
-                                                    <input type="radio" class="btn-check" name="status" id="inativo" autocomplete="off">
+                                                    <input type="radio" class="btn-check" name="status" id="editstatus" autocomplete="off" value="1">
                                                     <label class="btn btn-outline-primary" for="inativo">Inativo</label>
                                                     </div>
                                                     </div>
                                             </div>
                                             <div class="modal-footer">
                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
-                                    <input type="submit" class="btn btn-outline-success" id="edit-usuario-btn" value="Salvar" />
+                                    <input type="submit" class="btn btn-outline-warning" id="edit-usuario-btn" value="Salvar" />
                                             </div>
                                                 </form>
                                                 </div>
@@ -212,20 +212,6 @@ include_once "../../connection/conexao.php";
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="../../assets/js/custom.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            $('#listar-agendamento').DataTable({
-                "processing": true,
-                "serverSide": true,
-                "ajax": "view/listar_agendamentos.php",
-                "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/pt-BR.json"
-                }
-               
-            });
-        });
-    </script>
 </body>
 
 </html>
