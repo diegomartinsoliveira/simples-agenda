@@ -14,6 +14,7 @@ include_once "../../connection/conexao.php";
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css">
     <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css"> -->
     <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="shortcut icon" href="../../assets/img/favicon2.ico">
     <title>Simples Agenda Online</title>
 </head>
 
@@ -54,8 +55,8 @@ include_once "../../connection/conexao.php";
                                                     <input type="text" name="nome" class="form-control" id="nome" placeholder="Digite o nome completo">
                                                     </div>
                                                 <div class="mb-2">
-                                                <label for="email" class="col-form-label">Data:</label>
-                                                    <input type="date" name="data" class="form-control" id="data" placeholder="Digite a data do agendamento">
+                                                <label for="data" class="col-form-label">Data:</label>
+                                                    <input type="datetime-local" name="data" class="form-control" id="data" placeholder="Digite a data do agendamento">
                                                 </div>
                                                 <label for="descricao" class="col-form-label">Descricao:</label>
                                                 <textarea class="form-control" id="descricao" name="descricao" rows="2" placeholder="Digite a descrição"></textarea>
@@ -135,7 +136,7 @@ include_once "../../connection/conexao.php";
         </div>
     </div>
     <!-- Modal Editar -->
-    <div class="modal fade" id="editUsuarioModal">
+    <div class="modal fade" id="editUsuarioModal" tabindex="-1" aria-labelledby="editUsuarioModalLabel" aria-hidden="true">
                      <div class="modal-dialog modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -143,17 +144,16 @@ include_once "../../connection/conexao.php";
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                          </div>
                                             <div class="modal-body">
-                                                <form method="POST" id="edit-usuario-form">
+                                                <form id="edit-usuario-form">
                                                     <span id="msgAlertaErroEdit"></span>
-                                                    <span id="msgAlertaUsuario"></span>
                                                     <input type="hidden" name="id_agendamento" id="editid">
                                                     <div class="mb-2">
                                                     <label for="nome" class="col-form-label">Nome:</label>
                                                     <input type="text" name="nome" class="form-control" id="editnome">
                                                     </div>
                                                 <div class="mb-2">
-                                                <label for="email" class="col-form-label">Data:</label>
-                                                    <input type="date" name="data" class="form-control" id="editdata">
+                                                <label for="data" class="col-form-label">Data:</label>
+                                                    <input type="datetime-local" name="data" class="form-control" id="editdata">
                                                 </div>
                                                 <label for="descricao" class="col-form-label">Descricao:</label>
                                                 <textarea class="form-control" name="descricao" id="editdescricao" rows="2"></textarea>
@@ -168,11 +168,11 @@ include_once "../../connection/conexao.php";
                                                 <div class="form-group col-md-6">
                                                     <label>Status:</label><br>
                                                     <div class="btn-group tamanho-botao-ativo" role="group" aria-label="Basic radio toggle button group">
-                                                    <input type="radio" class="btn-check" name="status" id="editstatus" autocomplete="off" checked value="0">
-                                                    <label class="btn btn-outline-primary" for="ativo">Ativo</label>
+                                                    <input type="radio" class="btn-check" name="status" id="editativo" autocomplete="off" checked value="0">
+                                                    <label class="btn btn-outline-primary" for="editativo">Ativo</label>
 
-                                                    <input type="radio" class="btn-check" name="status" id="editstatus" autocomplete="off" value="1">
-                                                    <label class="btn btn-outline-primary" for="inativo">Inativo</label>
+                                                    <input type="radio" class="btn-check" name="status" id="editinativo" autocomplete="off" value="1">
+                                                    <label class="btn btn-outline-primary" for="editinativo">Inativo</label>
                                                     </div>
                                                     </div>
                                             </div>
@@ -194,8 +194,8 @@ include_once "../../connection/conexao.php";
     <table id="listar-agendamento" class="display" style="width:100%">
         <thead>
             <tr style="background-color: #e7e7e7;">
-                <th>Nome</th>
-                <th>Data</th>
+                <th>Nome Cliente</th>
+                <th>Data e Hora</th>
                 <th>Descrição</th>
                 <th>Status</th>
                 <th class="text-center">Detalhes</th>

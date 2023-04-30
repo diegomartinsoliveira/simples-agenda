@@ -1,6 +1,7 @@
 const cadForm = document.getElementById("cad-usuario-form");
 const editForm = document.getElementById("edit-usuario-form");
 const msgAlertaErroCad = document.getElementById("msgAlertaErroCad");
+const msgAlertaErroEdit = document.getElementById("msgAlertaErroEdit");
 const msgAlerta = document.getElementById("msgAlerta");
 const cadModal = new bootstrap.Modal(document.getElementById("cadUsuarioModal"));
 
@@ -43,7 +44,7 @@ const dados = await fetch("model/cadastrar.php", {
       body: dadosForm,
    });
 
-   console.log(dados);
+   //console.log(dados);
 
 const resposta = await dados.json();
 
@@ -108,61 +109,73 @@ async function listarUsuarios() {
     }
 }
 
-const editModal = new bootstrap.Modal(document.getElementById("editUsuarioModal"));
 async function editarAgendamento(id_agendamento) {
-    //console.log("Editar: " + id);
+   msgAlertaErroEdit.innerHTML = "";
 
-    const dados = await fetch('controller/visualizar.php?id_agendamento=' + id_agendamento);
-    const resposta = await dados.json();
-    console.log(resposta);
+   const dados = await fetch('controller/visualizar.php?id_agendamento=' + id_agendamento);
+   const resposta = await dados.json();
+   //console.log(resposta);
 
-    if (resposta['erro']) {
-        document.getElementById("msgAlertaErroEdit").innerHTML = "";
-
-        document.getElementById("msgAlerta").innerHTML = "";
-        editModal.show();
-
-      document.getElementById("editid").value = resposta['dados'].id_agendamento;
-      document.getElementById("editnome").value = resposta['dados'].nome;
-      document.getElementById("editdata").value = resposta['dados'].data;
-      document.getElementById("editdescricao").value = resposta['dados'].descricao;
-      document.getElementById("editlocal").value = resposta['dados'].local;
-      document.getElementById("editcontato").value = resposta['dados'].contato;
-      document.getElementById("editstatus").value = resposta['dados'].status;
-    } else {
-        document.getElementById("msgAlerta").innerHTML = resposta['msg'];
-    }
+   if (resposta['erro']) {
+       msgAlerta.innerHTML = resposta['msg'];
+   } else {
+       const editModal = new bootstrap.Modal(document.getElementById("editUsuarioModal"));
+       editModal.show();
+       document.getElementById("editid").value = resposta['dados'].id_agendamento;
+       document.getElementById("editnome").value = resposta['dados'].nome;
+       document.getElementById("editdata").value = resposta['dados'].data;
+       document.getElementById("editdescricao").value = resposta['dados'].descricao;
+       document.getElementById("editlocal").value = resposta['dados'].local;
+       document.getElementById("editcontato").value = resposta['dados'].contato;
+       document.getElementById("editativo").value = resposta['dados'].status;
+   }
 }
 
-const formEditUser = document.getElementById("edit-usuario-form");
-if (formEditUser) {
-    formEditUser.addEventListener("submit", async(e) => {
-        e.preventDefault();
-        const dadosForm = new FormData(formEditUser);
+editForm.addEventListener("submit", async (e) => {
+   e.preventDefault();
 
-        const dados = await fetch("controller/editar.php", {
-            method: "POST",
-            body: dadosForm
-        });
+   document.getElementById("edit-usuario-btn").value = "Salvando...";
 
-        const resposta = await dados.json();
+   const dadosForm = new FormData(editForm);
+   //console.log(dadosForm);
+   /*for (var dadosFormEdit of dadosForm.entries()){
+       console.log(dadosFormEdit[0] + " - " + dadosFormEdit[1]);
+   }*/
 
-        if (resposta['erro']) {
-            // Manter a janela modal aberta
-            //document.getElementById("msgAlertErroEdit").innerHTML = resposta['msg'];
+   const dados = await fetch("controller/editar.php", {
+       method: "POST",
+       body: dadosForm
+   });
 
-            // Fechar a janela modal
-            document.getElementById("msgAlerta").innerHTML = resposta['msg'];
-            document.getElementById("msgAlertErroEdit").innerHTML = "";
-            // Limpar o formulario
-            formEditUser.reset();
-            editModal.hide();
+   const resposta = await dados.json();
+   //console.log(resposta);
 
-            // Atualizar a lista de registros
-            listarDataTables = $('#listar-agendamento').DataTable();
-            listarDataTables.draw();
-        } else {
-            document.getElementById("msgAlertErroEdit").innerHTML = resposta['msg'];
-        }
-    });
+   if (resposta['erro']) {
+       msgAlertaErroEdit.innerHTML = resposta['msg'];
+   } else {
+       msgAlertaErroEdit.innerHTML = resposta['msg'];
+       listarDataTables = $('#listar-agendamento').DataTable();
+       listarDataTables.draw();
+   }
+
+   document.getElementById("edit-usuario-btn").value = "Salvar";
+});
+
+async function deletarAgendamento(id_agendamento) {
+
+   var confirmar = confirm("Tem certeza que deseja excluir o registro selecionado?");
+
+   if(confirmar == true){
+       const dados = await fetch('controller/deletar.php?id_agendamento=' + id_agendamento);
+
+       const resposta = await dados.json();
+       if (resposta['erro']) {
+           msgAlerta.innerHTML = resposta['msg'];
+       } else {
+           msgAlerta.innerHTML = resposta['msg'];
+           listarDataTables = $('#listar-agendamento').DataTable();
+           listarDataTables.draw();
+       }
+   }    
+
 }
