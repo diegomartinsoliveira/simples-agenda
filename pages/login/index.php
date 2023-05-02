@@ -33,16 +33,26 @@
             <div class="form-box">
                 <h4 class="titulo-entrar">Entre na sua conta</h4>
                 <br>
-                <form>
+                <?php
+                    if(isset($_SESSION['nao_autenticado'])):
+                    ?>
+                    <div class="notification is-danger">
+                      <p>ERRO: Usuário ou senha inválidos.</p>
+                    </div>
+                    <?php
+                    endif;
+                    unset($_SESSION['nao_autenticado']);
+                    ?>
+                <form action="logar.php" method="POST">
                     
                     <div class="input-box">
                         <span>E-mail</span>
-                        <input type="email" placeholder="Digite seu e-mail..">
+                        <input type="email" name="email" id="email" placeholder="Digite seu e-mail..">
                     </div>
 
                     <div class="input-box">
                         <span>Senha</span>
-                        <input type="password" placeholder="Digite sua senha..">
+                        <input type="password" name="senha" id="senha" placeholder="Digite sua senha..">
                     </div>
 
                     <div class="remember">
@@ -50,7 +60,7 @@
                     </div>
                     <div class="posicao-botao">
                     <div class="botao-entrar">
-                        <button type="button" class="btn btn-light btn-lg mb-2 botao-entrar">Entrar</button>
+                        <button type="submit" class="btn btn-light btn-lg mb-2 botao-entrar">Entrar</button>
                     </div>
                 </div>
 
