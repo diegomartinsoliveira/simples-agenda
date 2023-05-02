@@ -35,6 +35,7 @@
                 <br>
                 <?php
                     if(isset($_SESSION['nao_autenticado'])):
+                        print_r($_SESSION['nao_autenticado']);exit();
                     ?>
                     <div class="notification is-danger">
                       <p>ERRO: Usuário ou senha inválidos.</p>

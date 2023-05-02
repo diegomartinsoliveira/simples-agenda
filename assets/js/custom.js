@@ -127,7 +127,13 @@ async function editarAgendamento(id_agendamento) {
        document.getElementById("editdescricao").value = resposta['dados'].descricao;
        document.getElementById("editlocal").value = resposta['dados'].local;
        document.getElementById("editcontato").value = resposta['dados'].contato;
-       document.getElementById("editativo").value = resposta['dados'].status;
+       if(resposta['dados'].status == 0) {
+         document.getElementById("editativo").value = resposta['dados'].status;
+         document.getElementById("editativo").checked = true;
+       }else{
+       document.getElementById("editinativo").value = resposta['dados'].status;
+       document.getElementById("editinativo").checked = true;
+       }
    }
 }
 
