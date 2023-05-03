@@ -10,23 +10,23 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 // Acessa o IF quando o usuário clicar no botão cadastrar
 if(empty($dados['SendCadUser'])){
-	var_dump($dados);
-	//print_r($dados);exit;  
-
+	//var_dump($dados);
+	
 	// Criar a QUERY para cadastrar no banco de dados
-	$query_usuario = "INSERT INTO usuarios (nome, email, celular, senha) VALUES (:nome, :email, :celular, md5(':senha')";
-
+	$query_usuario = "INSERT INTO usuarios (nome, email, celular, senha) VALUES (:nome, :email, :celular, :senha)";
+	
 	// Preparar a QUERY
 	$cad_usuario = $conn->prepare($query_usuario);
-
+	
 	// Substituir o link pelo valor que vem do formulário
 	$cad_usuario->bindParam(':nome', $dados['nome']);
 	$cad_usuario->bindParam(':email', $dados['email']);
 	$cad_usuario->bindParam(':celular', $dados['celular']);
 	$cad_usuario->bindParam(':senha', $dados['senha']);
-
+	
 	// Executar a QUERY
 	$cad_usuario->execute();
+	//print_r($cad_usuario);exit;  
 
 	// Acessa o IF quando cadastrar o registro no banco de dados
 	if($cad_usuario->rowCount()){
