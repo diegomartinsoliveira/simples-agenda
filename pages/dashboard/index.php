@@ -1,5 +1,6 @@
 <?php
 include_once "../../connection/conexao.php";
+include('../login/verifica_login.php');
 ?>
 
 <!DOCTYPE html>
@@ -32,6 +33,7 @@ include_once "../../connection/conexao.php";
                 </div>
             </div>
     </header>
+    
  
 
                     <!-- Modal Agendar -->
@@ -188,6 +190,7 @@ include_once "../../connection/conexao.php";
                             </div>
                         </div>
                     </div>
+                    <a class="logout btn btn-warning" href="../login/logout.php">Sair</a>
 <div class="container-agendamentos">
 <span id="msgAlerta"></span>
     <h4>Listas de Agendamentos</h4>

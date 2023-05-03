@@ -81,9 +81,12 @@ if(resposta['erro']){
       document.getElementById("descricaoAgendamento").innerHTML = resposta['dados'].descricao;
       document.getElementById("localAgendamento").innerHTML = resposta['dados'].local;
       document.getElementById("contatoAgendamento").innerHTML = resposta['dados'].contato;
-      document.getElementById("statusAgendamento").innerHTML = resposta['dados'].status;
-      
+      if(resposta['dados'].status == 0){
+         document.getElementById("statusAgendamento").innerHTML = "Ativo";
+      }else{
+         document.getElementById("statusAgendamento").innerHTML = "Inativo";
       }
+   }
 }
 
 const usuario = document.getElementById("id_usuario");

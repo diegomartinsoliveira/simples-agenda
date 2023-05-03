@@ -8,6 +8,7 @@
     <!-- Link CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="shortcut icon" href="../../assets/img/favicon2.ico">
     <title>Cadastrar</title>
 </head>
 
@@ -36,40 +37,41 @@
             <div class="form-box">
                 <h4 class="titulo-entrar">Seus dados de acesso</h4>
                 <br>
-                <form>
+                <form action="cadastrar_usuario.php" method="POST">
                     
                     <div class="input-box">
                         <span>Nome</span>
-                        <input type="text" placeholder="Digite seu nome..">
+                        <input type="text" id="nome" name="nome" placeholder="Digite seu nome.." required>
                     </div>
 
                     <div class="input-box">
                         <span>E-mail</span>
-                        <input type="email" placeholder="Digite seu e-mail..">
+                        <input type="email" id="email" name="email" placeholder="Digite seu e-mail.." required>
                     </div>
 
                     <div class="input-box">
                         <span>Celular</span>
-                        <input type="text" placeholder="Digite seu número..">
+                        <input type="text" id="celular" name="celular" placeholder="Digite seu número.." required>
                     </div>
 
                     <div class="input-box">
                         <span>Senha</span>
-                        <input type="password" placeholder="Digite sua senha..">
+                        <input type="password" id="senha" name="senha" placeholder="Digite sua senha.." required>
                     </div>
 
                     <div class="remember-cadastro">
-                        <p class="tem-conta">Já possui uma conta? <a href="#">Fazer login</a></p>
+                        <p class="tem-conta">Já possui uma conta? <a href="../login/index.php">Fazer login</a></p>
                     </div>
+                    
                 <div class="posicao-botao">
                     <div class="botao-entrar">
-                        <button type="button" class="btn btn-light btn-lg mb-2 botao-entrar">Criar minha conta</button>
+                        <button type="submit" name="SendCadUser" class="btn btn-light btn-lg mb-2 botao-entrar">Criar minha conta</button>
                     </div>
                 </div>
 
                     <div class="input-box termos">
                        <p class="first-text">Ao continuar, você concorda com</p>
-                        <p>os <a class="second-text" href="#">Termos</a> e <a class="second-text" href="#">Política de Privacidade.</a></p>
+                        <p>os <a class="second-text" href="https://www.simplesagenda.com.br/site/termo-servico.php">Termos</a> e <a class="second-text" href="https://www.simplesagenda.com.br/site/politica-privacidade.php">Política de Privacidade.</a></p>
                     </div>
                 </form>
             </div>

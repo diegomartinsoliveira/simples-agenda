@@ -442,5 +442,17 @@ textarea {
   padding-bottom: 10px;
 }
 
+.invalid-login {
+  height: 37px;
+}
+
+.logout {
+  position: relative;
+  top: 12px;
+  right: 56px;
+  float: right;
+  text-decoration: none;
+  color: black;
+}
 
 

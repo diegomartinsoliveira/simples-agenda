@@ -90,9 +90,11 @@ $dados = array();
 while($row_agendamento = $result_agendamentos->fetch(PDO::FETCH_ASSOC)){
     //var_dump($row_agendamento);
     extract($row_agendamento);
+    $date = new DateTimeImmutable($data);
+    
     $registro = [];
     $registro[] = $nome;
-    $registro[] = $data;
+    $registro[] = $date->format('d/m/Y H:i:s');
     $registro[] = $descricao;
     $registro[] = $status == 'Ativo' ? "<button type='button' class='btn btn-success'>Ativo</button>" : "<button type='button' class='btn btn-danger'>Inativo</button>";
     $registro[] = "<button id='$id_agendamento' i class='bi bi-eye botao-acoes container' onclick='visUsuario($id_agendamento)'></i></button>";

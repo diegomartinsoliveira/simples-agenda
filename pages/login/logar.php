@@ -5,7 +5,7 @@ include_once "../../connection/conexao.php";
 
 
 if(empty($_POST['email']) || empty($_POST['senha'])) {
-	header('Location: index.php');
+	header('Location: ../login/index.php');
 	exit();
 }
 
@@ -13,7 +13,7 @@ $email = addslashes($_POST['email']);
 $senha = addslashes($_POST['senha']);
 
 // QUERY para recuperar registro do banco de dados
-$query_sits  = "SELECT email, senha FROM usuarios ";
+$query_sits  = "SELECT email, md5('senha') FROM usuarios ";
 $query_sits .= "WHERE email = :email ";
 $query_sits .= "AND senha = :senha";
 
@@ -32,7 +32,6 @@ if($tem_usuario) {
 
 } else {
 	$_SESSION['nao_autenticado'] = true;
-	header('Location: index.php');
-	alert("teste");
+	header('Location: ../login/index.php');
 	exit();
 }

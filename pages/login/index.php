@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -8,6 +12,7 @@
     <!-- Link CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="shortcut icon" href="../../assets/img/favicon2.ico">
     <title>Login</title>
 </head>
 
@@ -33,32 +38,33 @@
             <div class="form-box">
                 <h4 class="titulo-entrar">Entre na sua conta</h4>
                 <br>
-                <?php
-                    if(isset($_SESSION['nao_autenticado'])):
-                        print_r($_SESSION['nao_autenticado']);exit();
-                    ?>
-                    <div class="notification is-danger">
-                      <p>ERRO: Usuário ou senha inválidos.</p>
-                    </div>
-                    <?php
-                    endif;
-                    unset($_SESSION['nao_autenticado']);
-                    ?>
                 <form action="logar.php" method="POST">
                     
                     <div class="input-box">
                         <span>E-mail</span>
-                        <input type="email" name="email" id="email" placeholder="Digite seu e-mail..">
+                        <input type="email" name="email" id="email" placeholder="Digite seu e-mail.." required>
                     </div>
 
                     <div class="input-box">
                         <span>Senha</span>
-                        <input type="password" name="senha" id="senha" placeholder="Digite sua senha..">
+                        <input type="password" name="senha" id="senha" placeholder="Digite sua senha.." required>
                     </div>
 
                     <div class="remember">
-                        <a href="#">Esqueceu a Senha?</a>
+                        <a href="https://wa.link/d7rgiv/">Esqueceu a Senha?</a>
                     </div>
+                    <?php
+                    if(isset($_SESSION['nao_autenticado'])):
+                    ?>
+                    <div class="btn btn-danger invalid-login container">
+                      <p>Usuário ou senha inválidos.</p>
+                    </div>
+                    <br>
+                    <br>
+                    <?php
+                    endif;
+                    unset($_SESSION['nao_autenticado']);
+                    ?>
                     <div class="posicao-botao">
                     <div class="botao-entrar">
                         <button type="submit" class="btn btn-light btn-lg mb-2 botao-entrar">Entrar</button>
@@ -66,7 +72,7 @@
                 </div>
 
                     <div class="input-box sem-conta">
-                       <p>Ainda não possui uma conta? <a href="#">Criar conta</a></p>
+                       <p>Ainda não possui uma conta? <a href="../../pages/cadastro/index.php">Criar conta</a></p>
                     </div>
                 </form>
             </div>
