@@ -40,8 +40,8 @@
                 <form action="cadastrar_usuario.php" method="POST">
                     
                     <div class="input-box">
-                        <span>Nome</span>
-                        <input type="text" id="nome" name="nome" placeholder="Digite seu nome.." required>
+                        <span>Usuário</span>
+                        <input type="text" id="nome" name="nome" placeholder="Digite seu usuário.." required>
                     </div>
 
                     <div class="input-box">
@@ -51,7 +51,7 @@
 
                     <div class="input-box">
                         <span>Celular</span>
-                        <input type="text" id="celular" name="celular" placeholder="Digite seu número.." required>
+                        <input type="text" id="celular" name="celular" placeholder="Digite seu número.." maxlength="15" pattern="\(\d{2}\)\s*\d{5}-\d{4}" required>
                     </div>
 
                     <div class="input-box">
@@ -78,7 +78,19 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+  <script>
+    const celular = document.getElementById('celular') // Seletor do campo de telefone
+
+    celular.addEventListener('keypress', (e) => mascaraTelefone(e.target.value)) // Dispara quando digitado no campo
+    celular.addEventListener('change', (e) => mascaraTelefone(e.target.value)) // Dispara quando autocompletado o campo
+
+    const mascaraTelefone = (valor) => {
+    valor = valor.replace(/\D/g, "")
+    valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2")
+    valor = valor.replace(/(\d)(\d{4})$/, "$1-$2")
+    celular.value = valor // Insere o(s) valor(es) no campo
+}
+  </script>
 
 </body>
 

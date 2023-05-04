@@ -67,6 +67,11 @@ $("#listar-agendamento").DataTable().ajax.reload();
 async function visUsuario(id_agendamento){
 	const dados = await fetch('controller/visualizar.php?id_agendamento=' + id_agendamento)
    const resposta = await dados.json();
+   const novaData = new Date(resposta['dados'].data);
+   const dataComIntl = new Intl.DateTimeFormat('pt-BR', {
+      dateStyle: 'short',
+      timeStyle: 'short',
+   });
 
 if(resposta['erro']){
    msgAlerta.innerHTML = resposta['msg'];
@@ -77,7 +82,7 @@ if(resposta['erro']){
 
       document.getElementById("idAgendamento").innerHTML = resposta['dados'].id_agendamento;
       document.getElementById("nomeAgendamento").innerHTML = resposta['dados'].nome;
-      document.getElementById("dataAgendamento").innerHTML = resposta['dados'].data;
+      document.getElementById("dataAgendamento").innerHTML = dataComIntl.format(novaData);
       document.getElementById("descricaoAgendamento").innerHTML = resposta['dados'].descricao;
       document.getElementById("localAgendamento").innerHTML = resposta['dados'].local;
       document.getElementById("contatoAgendamento").innerHTML = resposta['dados'].contato;
@@ -187,4 +192,16 @@ async function deletarAgendamento(id_agendamento) {
        }
    }    
 
+}
+
+const contato = document.getElementById('contato') // Seletor do campo de telefone
+
+    contato.addEventListener('keypress', (e) => mascaraTelefone(e.target.value)) // Dispara quando digitado no campo
+    contato.addEventListener('change', (e) => mascaraTelefone(e.target.value)) // Dispara quando autocompletado o campo
+
+    const mascaraTelefone = (valor) => {
+    valor = valor.replace(/\D/g, "")
+    valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2")
+    valor = valor.replace(/(\d)(\d{4})$/, "$1-$2")
+    contato.value = valor // Insere o(s) valor(es) no campo
 }

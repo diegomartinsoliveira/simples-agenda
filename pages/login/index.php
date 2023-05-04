@@ -42,7 +42,7 @@ session_start();
                     
                     <div class="input-box">
                         <span>E-mail</span>
-                        <input type="email" name="email" id="email" placeholder="Digite seu e-mail.." required>
+                        <input type="email" name="email" id="email" placeholder="Digite seu e-mail.." maxlength="60" required>
                     </div>
 
                     <div class="input-box">

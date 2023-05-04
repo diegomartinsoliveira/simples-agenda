@@ -19,7 +19,9 @@ if(($result_sits) and ($result_sits->rowCount() != 0)){
     }
     $retorna = ['id_usuario' => true, 'dados' => $dados];
 }else{
-    $retorna = ['id_usuario' => false, 'msg' => "<p style='color: #f00'>Erro: Nenhum usuário encontrado!</p>"];
+    $retorna = ['id_usuario' => false, 'msg' => "<div class='btn btn-danger invalid-login container'>
+    <p>Nenhum usuário encontrado!</p>
+  </div><br>"];
 }
 
 echo json_encode($retorna);

@@ -54,7 +54,7 @@ include('../login/verifica_login.php');
                                                     </select>
                                                     <div class="mb-2">
                                                     <label for="nome" class="col-form-label">Nome:</label>
-                                                    <input type="text" name="nome" class="form-control" id="nome" placeholder="Digite o nome completo">
+                                                    <input type="text" name="nome" class="form-control" id="nome" placeholder="Digite o nome completo" maxlength="45">
                                                     </div>
                                                 <div class="mb-2">
                                                 <label for="data" class="col-form-label">Data:</label>
@@ -68,7 +68,7 @@ include('../login/verifica_login.php');
                                                 </div>   
                                                 <div class="mb-2">
                                                     <label for="contato" class="col-form-label">Contato:</label>
-                                                    <input type="text" name="contato" class="form-control" id="contato" placeholder="Digite o número para contato">
+                                                    <input type="text" name="contato" class="form-control" id="contato" placeholder="Digite o número para contato" maxlength="15" pattern="\(\d{2}\)\s*\d{5}-\d{4}">
                                                 </div>   
                                                 <div class="form-group col-md-6">
                                                     <label>Status:</label><br>
@@ -151,7 +151,7 @@ include('../login/verifica_login.php');
                                                     <input type="hidden" name="id_agendamento" id="editid">
                                                     <div class="mb-2">
                                                     <label for="nome" class="col-form-label">Nome:</label>
-                                                    <input type="text" name="nome" class="form-control" id="editnome">
+                                                    <input type="text" name="nome" class="form-control" id="editnome" maxlength="45">
                                                     </div>
                                                 <div class="mb-2">
                                                 <label for="data" class="col-form-label">Data:</label>
@@ -165,7 +165,7 @@ include('../login/verifica_login.php');
                                                 </div>   
                                                 <div class="mb-2">
                                                     <label for="contato" class="col-form-label">Contato:</label>
-                                                    <input type="text" name="contato" class="form-control" id="editcontato">
+                                                    <input type="text" name="contato" class="form-control" id="editcontato" maxlength="15" pattern="\(\d{2}\)\s*\d{5}-\d{4}">
                                                 </div>   
                                                 <div class="form-group col-md-6">
                                                     <label>Status:</label><br>
