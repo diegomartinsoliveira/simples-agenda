@@ -65,6 +65,18 @@ session_start();
                     endif;
                     unset($_SESSION['nao_autenticado']);
                     ?>
+                    <?php
+                    if(isset($_SESSION['msg'])):
+                    ?>
+                    <div class="btn btn-success success-login container">
+                      <p>Usuário cadastrado com sucesso!.</p>
+                    </div>
+                    <br>
+                    <br>
+                    <?php
+                    endif;
+                    unset($_SESSION['msg']);
+                    ?>
                     <div class="posicao-botao">
                     <div class="botao-entrar">
                         <button type="submit" class="btn btn-light btn-lg mb-2 botao-entrar">Entrar</button>

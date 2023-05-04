@@ -9,29 +9,34 @@ if(empty($_POST['email']) || empty($_POST['senha'])) {
 	exit();
 }
 
-$email = addslashes($_POST['email']);
-$senha = addslashes($_POST['senha']);
+$dados_login = filter_input_array(INPUT_POST, FILTER_DEFAULT);  
+$hash  = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+
 
 // QUERY para recuperar registro do banco de dados
-$query_sits  = "SELECT email, md5('senha') FROM usuarios ";
-$query_sits .= "WHERE email = :email ";
-$query_sits .= "AND senha = :senha";
+$query  = "SELECT email, senha FROM usuarios WHERE email = :email AND senha = :hash";
 
-$result_user = $conn->prepare($query_sits);
-$result_user->bindParam(':email', $email, PDO::PARAM_STR);
-$result_user->bindParam(':senha', $senha, PDO::PARAM_STR);
-
-$result_user->execute();
-$tem_usuario = $result_user->fetch(PDO::FETCH_ASSOC);
-
-if($tem_usuario) {
-	$_SESSION['email'] = $email;
-	header('Location: ../dashboard/index.php');
-	exit();
-
-
+	// Preparar a QUERY
+	$login_usuario = $conn->prepare($query);
+	
+	// Substituir o link pelo valor que vem do formulário
+	$login_usuario->bindParam(':email', $dados_login['email']);
+	$login_usuario->bindParam(':hash', $hash);
+	// Executar a QUERY
+	$login_usuario->execute();
+	//print_r($login_usuario);exit();  
+	
+	// Acessa o IF quando cadastrar o registro no banco de dados
+	if (password_verify($_POST['senha'], $hash )) {
+		$_SESSION['email'] = $dados_login['email'];
+		//print_r('caiu success');exit();
+		header('Location: ../dashboard/index.php');
+		exit();
+	
 } else {
+	
+	print_r('caiu no erro');exit();
 	$_SESSION['nao_autenticado'] = true;
 	header('Location: ../login/index.php');
 	exit();
-}
+ }

@@ -446,6 +446,11 @@ textarea {
   height: 37px;
 }
 
+.success-login {
+  height: 37px;
+}
+
+
 .logout {
   position: relative;
   top: 12px;

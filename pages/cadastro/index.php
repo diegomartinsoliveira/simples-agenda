@@ -68,7 +68,7 @@
                         <button type="submit" name="SendCadUser" class="btn btn-light btn-lg mb-2 botao-entrar">Criar minha conta</button>
                     </div>
                 </div>
-
+                
                     <div class="input-box termos">
                        <p class="first-text">Ao continuar, você concorda com</p>
                         <p>os <a class="second-text" href="https://www.simplesagenda.com.br/site/termo-servico.php">Termos</a> e <a class="second-text" href="https://www.simplesagenda.com.br/site/politica-privacidade.php">Política de Privacidade.</a></p>
