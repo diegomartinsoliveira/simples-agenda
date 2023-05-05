@@ -17,12 +17,10 @@ $query = "SELECT email, senha FROM usuarios WHERE email = :email";
 $login_usuario = $conn->prepare($query);
 
 // Substituir o link pelo valor que vem do formulário
-$login_usuario->bindParam(':email', $dados_login['email']);
-
+$login_usuario->bindParam(':email', $dados_login['email']);	
 // Executar a QUERY
 $login_usuario->execute();
 
-// Recuperar o registro do usuário
 $usuario = $login_usuario->fetch(PDO::FETCH_ASSOC);
 
 if ($usuario && password_verify($dados_login['senha'], $usuario['senha'])) {

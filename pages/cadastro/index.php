@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -51,7 +55,7 @@
 
                     <div class="input-box">
                         <span>Celular</span>
-                        <input type="text" id="celular" name="celular" placeholder="Digite seu número.." maxlength="15" pattern="\(\d{2}\)\s*\d{5}-\d{4}" required>
+                        <input type="text" id="celular" name="celular" placeholder="Digite seu número.." maxlength="16" pattern="\(\d{2}\)\s*\d{5}-\d{4}" required>
                     </div>
 
                     <div class="input-box">
@@ -62,7 +66,18 @@
                     <div class="remember-cadastro">
                         <p class="tem-conta">Já possui uma conta? <a href="../login/index.php">Fazer login</a></p>
                     </div>
-                    
+                    <?php
+                    if(isset($_SESSION['msg-erro'])):
+                    ?>
+                    <div class="btn btn-danger invalid-login container">
+                      <p>Este usuário já existe!.</p>
+                    </div>
+                    <br>
+                    <br>
+                    <?php
+                    endif;
+                    unset($_SESSION['msg-erro']);
+                    ?>
                 <div class="posicao-botao">
                     <div class="botao-entrar">
                         <button type="submit" name="SendCadUser" class="btn btn-light btn-lg mb-2 botao-entrar">Criar minha conta</button>
