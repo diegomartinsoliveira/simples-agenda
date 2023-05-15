@@ -2,8 +2,7 @@
 
 Projeto de uma agenda online feita em HTML, Bootstrap, Javascript e MySQL para treinamento da linguagem e tecnologias aplicadas.
 
-O sistema é possível fazer cadastro de usuários e seus respectivos agendamentos para obter mais conhecimento e se adaptar na linguagem PHP, 
-no sistema será possível cadastrar, editar, remover e listar usuários e agendamentos na interface.
+O sistema é possível fazer login e cadastro de usuários e seus respectivos agendamentos para obter mais conhecimento e se adaptar na linguagem PHP, no dashboard será possível cadastrar, editar, remover, listar usuários e agendamentos na interface.
 
 Além do PHP utilizei o HTML e Bootstrap para criação do formulário e o Javascript para fazer as validações, 
 o MySQL como banco de dados, levando em conta as boas práticas de programação, clean code e segurança..
