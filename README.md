@@ -1,4 +1,4 @@
-# SIMPES AGENDA - SUA AGENDA ONLINE
+# SIMPLES AGENDA - SUA AGENDA ONLINE
 
 Projeto de uma agenda online feita em HTML, Bootstrap, Javascript e MySQL para treinamento da linguagem e tecnologias aplicadas.
 
